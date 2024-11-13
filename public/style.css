@@ -1,73 +1,124 @@
+/* Import the gaming-style font */
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Press Start 2P', cursive; /* Gaming font style */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('BackGroundSpaceMark1.png') no-repeat center center fixed;
+  background: url('ENG.png') no-repeat center center fixed;
   background-size: cover;
   color: white;
 }
 
 .container {
   text-align: center;
+  position: absolute;
+  top: 20%; /* Position "Protect Our Faculty" at around 75% height */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 36px; /* Larger, gaming-style font size */
+  color: white; /* Set color to white for visibility */
+  margin-bottom: 40px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add subtle shadow effect */
+  font-family: 'Press Start 2P', cursive; /* Match font with leaderboard */
 }
 
 .input-box {
   position: absolute;
-  top: 20px; /* Distance from the top of the page */
-  left: 20px; /* Distance from the left side of the page */
+  top: 20px;
+  left: 20px;
 }
 
 .nickname-input {
   padding: 10px;
-  border: none;
-  border-radius: 20px;
-  width: 200px;
+  border: 2px solid black; /* Black inner stroke */
+  border-radius: 5px; /* Make it square with small rounded corners */
+  width: 180px; /* Slightly wider for more space */
+  height: 40px; /* Set height to match the leaderboard text height */
   font-size: 16px;
   text-align: center;
+  font-family: 'Press Start 2P', cursive; /* Match font style with other text */
+  color: black;
+  box-shadow: 0 0 0 4px white; /* White outer stroke effect */
 }
 
 .login-button {
-  margin-top: 20px;
+  margin-top: -20px;
   padding: 10px 30px;
-  background-color: #7ae0cf;
-  color: #000;
-  border: none;
+  background-color: black; /* Set background to black */
+  color: white; /* White text */
+  border: 4px solid; /* Initial border without color */
   border-radius: 20px;
   font-size: 20px;
   cursor: pointer;
+  font-family: 'Press Start 2P', cursive; /* Match font with leaderboard */
+  animation: rgbBorderPulse 3s infinite alternate; /* RGB border animation */
 }
 
-.login-button:hover {
-  background-color: #5fc0ae;
+@keyframes rgbBorderPulse {
+  0% {
+    border-color: rgb(255, 0, 0); /* Red */
+  }
+  33% {
+    border-color: rgb(0, 255, 0); /* Green */
+  }
+  66% {
+    border-color: rgb(0, 0, 255); /* Blue */
+  }
+  100% {
+    border-color: rgb(255, 0, 0); /* Red */
+  }
 }
 
+/* Leaderboards positioned lower with increased gap */
 .leaderboards {
   position: absolute;
-  top: 50%;
-  right: 10%;
-  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* Slightly larger gap between leaderboards */
+  bottom: 60px; /* Move leaderboards slightly down */
 }
 
 .leaderboard-box {
-  background-color: rgba(122, 224, 207, 0.9);
+  background-color: crimson; /* Set background to crimson red */
   border-radius: 20px;
-  padding: 20px;
-  width: 200px;
-  margin-bottom: 20px;
+  padding: 70px 30px; /* Increased padding to create larger gap between title and content */
+  width: 300px;
   text-align: center;
+  border: 3px solid #ffd700; /* Gold border for a decorative look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 215, 0, 0.5); /* Shadow effect */
+  position: relative;
 }
 
+/* Only top-left and top-right stars */
+.leaderboard-box::before,
+.leaderboard-box::after {
+  content: "★";
+  position: absolute;
+  font-size: 20px;
+  color: #ffd700; /* Gold color for stars */
+}
+
+.leaderboard-box::before { top: 10px; left: 10px; } /* Top-left star */
+.leaderboard-box::after { top: 10px; right: 10px; } /* Top-right star */
+
 .leaderboard-title {
-  font-size: 18px;
+  font-size: 28px; /* Larger title font size for better visibility */
+  color: white;
+  text-shadow: 2px 2px 0px black; /* Black stroke effect */
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 30px; /* Increased margin for larger gap */
 }
 
 .score-item {
-  font-size: 16px;
-  margin: 5px 0;
+  font-size: 18px; /* Larger font size for scores */
+  margin: 3px 0; /* Reduced margin for closer spacing */
+  color: white;
+  min-height: 40px; /* Set fixed height to match Nickname box */
 }
