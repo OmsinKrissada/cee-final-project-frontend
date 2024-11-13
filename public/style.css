@@ -2,7 +2,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Press Start 2P', cursive; /* Gaming font style */
+  font-family: 'Quantico', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,15 +13,25 @@ body {
 }
 
 .container {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 2rem;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 0.6rem;
+
   position: absolute;
   top: 20%; /* Position "Protect Our Faculty" at around 75% height */
   left: 50%;
   transform: translate(-50%, -50%);
+
+  text-align: center;
 }
 
 h1 {
-  font-size: 38px; /* Larger, gaming-style font size */
+  font-size: 28px; /* Larger, gaming-style font size */
   color: white; /* Set color to white for visibility */
   margin-bottom: 40px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add subtle shadow effect */
@@ -48,25 +58,33 @@ h1 {
 }
 
 .login-button {
-  margin-top: -20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  margin: 10px 0px;
   padding: 10px 30px;
-  background-color: #282828; /* Set background to black */
+  background-color: hsl(21, 86%, 25%); /* Set background to black */
 
-  box-shadow: 0 0.5rem 0 0 rgba(0, 0, 0, 1);
+  box-shadow: 0 0.5rem 0 0 rgb(53, 27, 1);
   border-radius: 0.5rem;
 
   color: white; /* White text */
-  border: 1.6px solid; /* Initial border without color */
   /* border-radius: 20px; */
 
   text-decoration: none;
   font-size: 20px;
-  font-family: 'Press Start 2P', cursive; /* Match font with leaderboard */
+  /* font-family: 'Press Start 2P', cursive;  Match font with leaderboard */
+}
+
+#discord-login-button {
+  border: 1.6px solid; /* Initial border without color */
   animation: rgbBorderPulse 3s infinite alternate; /* RGB border animation */
 }
 
 .login-button:hover {
-  background-color: #444444;
+  background-color: hsl(21, 86%, 30%);
+  transform: translateY(2px);
 }
 
 @keyframes rgbBorderPulse {

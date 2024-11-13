@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Defend Our Faculty</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="input-box">
@@ -15,9 +18,13 @@
   <div class="container">
     <h1>Defend Our Faculty</h1>
     <!-- TODO: change OAuth url to production -->
+    <a id="discord-login-button" class="login-button" href="https://discord.com/oauth2/authorize?client_id=808361107118096454&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000&scope=identify">
+      <img src="assets/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
+      Continue with Discord
+    </a>
+    <p>OR</p>
     <a class="login-button" href="https://discord.com/oauth2/authorize?client_id=808361107118096454&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000&scope=identify">
-      <img src="assets/discord-mark-white.svg" width="28">
-      Login
+      Continue as guest
     </a>
   </div>
 
