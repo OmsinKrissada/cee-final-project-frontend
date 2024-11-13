@@ -1,149 +1,73 @@
-@import url("https://fonts.googleapis.com/css2?family=Mitr:wght@200;400;600&display=swap");
-
 body {
-  font-family: "Mitr", sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('BackGroundSpaceMark1.png') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
 }
 
-#app-name {
-  font-size: 2em;
-  font-weight: bold;
-  margin: 0;
+.container {
   text-align: center;
 }
 
-section {
-  margin: 20px 0;
+.input-box {
+  position: absolute;
+  top: 20px; /* Distance from the top of the page */
+  left: 20px; /* Distance from the left side of the page */
 }
 
-.section-title {
-  font-size: 1.2em;
-  font-weight: lighter;
-  margin: 0;
+.nickname-input {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  width: 200px;
+  font-size: 16px;
+  text-align: center;
 }
 
-.section-subtitle {
-  font-size: 0.8em;
-  font-weight: lighter;
-  line-height: 80%;
-}
-
-#member-list {
-  margin: 0;
-  font-size: 0.8em;
-}
-
-#member-list div {
-  display: flex;
-  align-items: center;
-  margin: 4px 0px;
-  column-gap: 4px;
-}
-
-#main-table {
-  padding: 0;
-  width: 100%;
-  background: #eee;
-  border-radius: 8px;
-  box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.1);
-  border-collapse: collapse;
-  overflow: hidden;
-}
-
-#main-table > thead {
-  background: #555;
-  color: white;
-}
-
-#main-table > thead > tr > th {
-  font-weight: lighter;
-  text-align: left;
-}
-
-#main-table td,
-#main-table th {
-  padding: 5px 10px;
-  font-weight: lighter;
-}
-
-#main-table input,
-#main-table select,
-#filter-name,
-#lower-price,
-#upper-price,
-#member-name-to-add {
-  padding: 5px 10px;
-  border-radius: 8px;
-  border: 1px solid #aaa;
-}
-
-
-#main-table button,
-#add-member,
-#member-list button {
-  border-radius: 8px;
-  padding: 5px 10px;
-  border: 1px solid #aaa;
-  background: white;
-  width: 60px;
+.login-button {
+  margin-top: 20px;
+  padding: 10px 30px;
+  background-color: #7ae0cf;
+  color: #000;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
   cursor: pointer;
 }
 
-#main-table button:hover,
-#add-member:hover,
-#member-list button:hover {
-  background: rgb(255, 200, 105);
-  color: white;
+.login-button:hover {
+  background-color: #5fc0ae;
 }
 
-#filter-button {
-  color: black;
-  border-radius: 8px;
-  padding: 5px 10px;
-  border: 1px solid #aaa;
-  background: white;
-  width: 60px;
-  cursor: pointer;
+.leaderboards {
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
 }
 
-#filter-button:hover {
-  color: white;
-  animation: filtering 10s infinite linear;
+.leaderboard-box {
+  background-color: rgba(122, 224, 207, 0.9);
+  border-radius: 20px;
+  padding: 20px;
+  width: 200px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-@keyframes filtering {
-  0% {
-    background: #ff0000;
-  }
+.leaderboard-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
 
-  12.5% {
-    background: #ffa500;
-  }
-
-  25% {
-    background: #ffff00;
-  }
-
-  37.5% {
-    background: #008000;
-  }
-
-  50% {
-    background: #0000ff;
-  }
-
-  62.5% {
-    background: #4b0082;
-  }
-
-  75% {
-    background: purple;
-  }
-
-  87.5% {
-    background: #ee82ee;
-  }
-
-  100% {
-    background: #ff0000;
-  }
+.score-item {
+  font-size: 16px;
+  margin: 5px 0;
 }
