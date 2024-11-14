@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
+
 <body>
   <div class="input-box">
     <input type="text" class="nickname-input" placeholder="Nickname">
@@ -28,7 +29,73 @@
     </a>
   </div>
 
-  <div class="leaderboards">
+  <div class="leaderboard-container">
+
+
+  <div class="leaderboard">
+    <div class="leaderboard-header">
+      <h2 class="leaderboard-title">
+        <span class="trophy">&#x1F3C6;</span> All Time
+      </h2>
+    </div>
+    <div class="leaderboard-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="table-head">Rank</th>
+            <th class="table-head">Name</th>
+            <th class="table-head leaderboard-score">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row">
+            <td class="table-cell">1</td>
+            <td class="table-cell">Player One</td>
+            <td class="table-cell leaderboard-score">12345</td>
+          </tr>
+          <tr class="table-row">
+            <td class="table-cell">2</td>
+            <td class="table-cell">Player Two</td>
+            <td class="table-cell leaderboard-score">11000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="leaderboard">
+    <div class="leaderboard-header">
+      <h2 class="leaderboard-title">
+        <span class="trophy">&#x1F3C6;</span> Best Scores
+      </h2>
+    </div>
+    <div class="leaderboard-content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th class="table-head">Rank</th>
+            <th class="table-head">Name</th>
+            <th class="table-head leaderboard-score">Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="table-row">
+            <td class="table-cell">1</td>
+            <td class="table-cell">Player One</td>
+            <td class="table-cell leaderboard-score">12345</td>
+          </tr>
+          <tr class="table-row">
+            <td class="table-cell">2</td>
+            <td class="table-cell">Player Two</td>
+            <td class="table-cell leaderboard-score">11000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+  
+  
+  <!-- <div class="leaderboards">
     <div class="leaderboard-box">
       <div class="leaderboard-title">Top Scores</div>
       <div class="score-item">OmsimZa</div>
@@ -46,6 +113,6 @@
       <div class="score-item">X</div>
       <div class="score-item">X</div>
     </div>
-  </div>
+  </div> -->
 </body>
 </html>
