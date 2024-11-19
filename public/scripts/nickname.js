@@ -16,12 +16,12 @@ export async function changeNickname() {
 	inputField.setAttribute('disabled', true);
 	submitIcon.setAttribute('src', 'assets/icons/edit.svg');
 
+	isEditable = false;
+
 	await fetch(`${BACKEND_URL}/player/nickname`, {
 		method: 'POST',
 		body: JSON.stringify({ newNickname })
 	});
-
-	isEditable = false;
 }
 
 function makeEditable() {
