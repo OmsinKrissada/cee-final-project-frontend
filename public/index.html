@@ -11,16 +11,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
 
+<script type="module" src="scripts/main.js" defer></script>
+
 <body>
-  <div class="input-box">
-    <input type="text" class="nickname-input" placeholder="Nickname">
+  <div class="nickname-box">
+    <input 
+      type="text" 
+      id="nickname-input" 
+      class="nickname-input" 
+      disabled 
+      placeholder="Enter Nickname"
+    >
+    <button id="nickname-submit" class="nickname-submit" aria-label="Edit Nickname">
+      <img src="assets/icons/edit.svg" width="28" alt="Edit Icon">
+    </button>
   </div>
+  
   
   <div class="container">
     <h1>Defend Our Faculty</h1>
     <!-- TODO: change OAuth url to production -->
-    <a id="discord-login-button" class="login-button" href="https://discord.com/oauth2/authorize?client_id=808361107118096454&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3000&scope=identify">
-      <img src="assets/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
+    <a id="discord-login-button" class="login-button" href="https://discord.com/oauth2/authorize?client_id=808361107118096454&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A3001%2Fauth%2Fredirect&scope=identify">
+      <img src="assets/icons/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
       Continue with Discord
     </a>
     <p>OR</p>

@@ -1,4 +1,3 @@
-/* Import the gaming-style font */
 body {
   margin: 0;
   padding: 0;
@@ -47,24 +46,72 @@ h1 {
   font-family: 'Press Start 2P', cursive; /* Match font with leaderboard */
 }
 
-.input-box {
+.nickname-box {
   position: absolute;
   top: 20px;
   left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 12px;
+  /* border: 2px solid #fff;
+  border-radius: 8px; */
+
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
 }
 
 .nickname-input {
-  padding: 10px;
-  border: 2px solid black; /* Black inner stroke */
-  border-radius: 5px; /* Make it square with small rounded corners */
-  width: 180px; /* Slightly wider for more space */
-  height: 40px; /* Set height to match the leaderboard text height */
-  font-size: 16px;
-  text-align: center;
-  font-family: 'Press Start 2P', cursive; /* Match font style with other text */
-  color: black;
-  box-shadow: 0 0 0 4px white; /* White outer stroke effect */
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid hsl(21, 86%, 25%);
+
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: 'Quantico', sans-serif;
+  padding: 4px 8px;
+
+  transition: border-bottom 0.3s ease, color 0.3s ease;
 }
+
+.nickname-input:focus {
+  border-bottom: 2px solid hsl(21, 86%, 50%);
+  outline: none;
+}
+
+.nickname-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.nickname-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.nickname-submit:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nickname-submit img {
+  transition: transform 0.3s ease;
+}
+
+.nickname-submit:hover img {
+  transform: scale(1.1);
+}
+
 
 .login-button {
   display: flex;
