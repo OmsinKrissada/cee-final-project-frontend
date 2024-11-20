@@ -3,22 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scoreboard Page</title>
+    <title>Phaser Game</title>
     <link rel="stylesheet" href="styleforgame.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.60.0/dist/phaser.min.js"></script>
 </head>
 <body>
+    <div id="phaser-container"></div>
+
     <div class="container">
         <div class="scoreboard">ScoreBoard</div>
         <div class="textfield-container">
             <input
+                id="userInput" 
                 type="text"
                 class="textfield"
                 placeholder="Please Do not Stop Typing for you faculty"
             />
-            <button class="action-button">
+            <button id="clearButton" class="action-button">
                 <span>&#8250;</span>
             </button>
         </div>
     </div>
+
+    <script src="scripts/game.js"></script>
 </body>
 </html>
