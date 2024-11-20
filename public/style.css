@@ -1,7 +1,9 @@
+@import url(global.css);
+
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Quantico', sans-serif;
+  font-family: var(--content-font);
 
   display: flex;
   flex-direction: column;
@@ -43,7 +45,7 @@ h1 {
   color: white; /* Set color to white for visibility */
   margin-bottom: 40px;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add subtle shadow effect */
-  font-family: 'Press Start 2P', cursive; /* Match font with leaderboard */
+  font-family: var(--title-font); /* Match font with leaderboard */
 }
 
 .nickname-box {
@@ -70,7 +72,7 @@ h1 {
 
   color: #fff;
   font-size: 1.2rem;
-  font-family: 'Quantico', sans-serif;
+  font-family: var(--content-font);
   padding: 4px 8px;
 
   transition: border-bottom 0.3s ease, color 0.3s ease;
