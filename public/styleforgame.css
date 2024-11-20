@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: #000000;
+    background-image: url(assets/animated-bg.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.scoreboard {
+    position: absolute;
+    top: 4%;
+    right: 3%; 
+    width: 15vw;
+    height: 8vh; 
+    background-color: #ff4d4d;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5vw;
+    font-weight: bold;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.textfield-container {
+    position: absolute;
+    bottom: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 800px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.textfield {
+    flex: 1;
+    height: 7vh;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0 10px;
+    font-size: 1.5vw;
+    color: black;
+}
+
+.textfield::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.textfield:focus::placeholder {
+    color: transparent;
+}
+
+.action-button {
+    width: 7vh; 
+    height: 7vh;
+    margin-left: 10px;
+    background-color: #ff4d4d;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.action-button span {
+    color: white;
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+.action-button:hover {
+    transform: scale(1.1);
+}
+
+.action-button:active {
+    transform: scale(0.95);
+}
