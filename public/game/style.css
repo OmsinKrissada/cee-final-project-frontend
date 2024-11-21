@@ -109,12 +109,6 @@ body {
     transition: transform 0.2s ease;
 }
 
-.action-button span {
-    color: white;
-    font-size: 2vw;
-    font-weight: bold;
-}
-
 .action-button:hover {
     transform: scale(1.1);
 }
