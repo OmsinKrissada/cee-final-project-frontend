@@ -17,6 +17,7 @@ export async function changeNickname() {
 
 	inputField.setAttribute('disabled', true);
 	submitIcon.setAttribute('src', 'assets/icons/edit.svg');
+	inputField.style.borderBottom = null;
 
 	isEditable = false;
 
@@ -29,6 +30,7 @@ export async function changeNickname() {
 function makeEditable() {
 	inputField.removeAttribute('disabled');
 	submitIcon.setAttribute('src', 'assets/icons/check.svg');
+	inputField.style.borderBottom = '2px solid hsl(21, 86%, 25%)';
 
 	isEditable = true;
 }

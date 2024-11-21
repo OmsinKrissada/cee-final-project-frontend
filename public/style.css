@@ -73,14 +73,13 @@ h1 {
   flex: 1;
   background: transparent;
   border: none;
-  border-bottom: 2px solid hsl(21, 86%, 25%);
 
   color: #fff;
   font-size: 1.2rem;
   font-family: var(--content-font);
   padding: 4px 8px;
 
-  transition: border-bottom 0.3s ease, color 0.3s ease;
+  /* transition: border-bottom 0.3s ease, color 0.3s ease; */
 }
 
 .nickname-input:focus {
