@@ -3,6 +3,7 @@ import { BACKEND_URL } from "./config.js";
 // let nickname = null;
 let isEditable = false;
 
+const box = document.getElementById('nickname-box');
 const inputField = document.getElementById('nickname-input');
 const submitButton = document.getElementById('nickname-submit');
 const submitIcon = document.querySelector('#nickname-submit>img');
@@ -32,8 +33,17 @@ function makeEditable() {
 }
 
 export async function getNickname() {
-	const { nickname } = await fetch(`${BACKEND_URL}/player/nickname`).then(r => r.json());
-	inputField.value = nickname;
+	const { nickname } = await fetch(`${BACKEND_URL}/player/nickname`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } }).then(r => r.json());
+	if (nickname) {
+		inputField.value = nickname;
+		box.style.display = 'flex';
+
+		// setTimeout cuz the transition effect doesn't happen when all these 3 styles are applied at the same time
+		setTimeout(() => {
+			box.style.opacity = 1;
+			box.style.filter = 'blur(0)';
+		}, 0);
+	}
 }
 
 

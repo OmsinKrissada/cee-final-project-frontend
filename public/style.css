@@ -48,11 +48,16 @@ h1 {
   font-family: var(--title-font);
 }
 
-.nickname-box {
+#nickname-box {
+  /* change to flex on nickname load */
+  display: none;
+  opacity: 0;
+  filter: blur(20px);
+  transition: filter 0.2s;
+
   position: absolute;
   top: 20px;
   left: 20px;
-  display: flex;
   align-items: center;
   gap: 10px;
 
