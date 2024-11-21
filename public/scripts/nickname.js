@@ -1,3 +1,4 @@
+import { fetchAuth } from "./api.js";
 import { BACKEND_URL } from "./config.js";
 
 // let nickname = null;
@@ -19,9 +20,9 @@ export async function changeNickname() {
 
 	isEditable = false;
 
-	await fetch(`${BACKEND_URL}/player/nickname`, {
+	await fetchAuth(`${BACKEND_URL}/player/nickname`, {
 		method: 'POST',
-		body: JSON.stringify({ newNickname })
+		body: JSON.stringify({ nickname: newNickname })
 	});
 }
 
@@ -33,7 +34,7 @@ function makeEditable() {
 }
 
 export async function getNickname() {
-	const { nickname } = await fetch(`${BACKEND_URL}/player/nickname`, { headers: { authorization: `Bearer ${localStorage.getItem('token')}` } }).then(r => r.json());
+	const { nickname } = await fetchAuth(`${BACKEND_URL}/player/nickname`).then(r => r.json());
 	if (nickname) {
 		inputField.value = nickname;
 		box.style.display = 'flex';
