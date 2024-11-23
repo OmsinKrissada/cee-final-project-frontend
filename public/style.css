@@ -139,11 +139,11 @@ h1 {
 }
 
 #discord-login-button {
-  border: 1.6px solid;
+  /* border: 1.6px solid; */
   animation: rgbBorderPulse 3s infinite alternate; /* RGB border animation */
-  background-color: hsl(21, 86%, 25%);
+  background-color: hsl(235, 49%, 51%); /* blurple */
 
-  box-shadow: 0 0.5rem 0 0 rgb(53, 27, 1);
+  box-shadow: 0 0.5rem 0 0 hsl(235, 49%, 30%);
 }
 
 .login-button:hover {
