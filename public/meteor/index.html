@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phaser Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/phaser@3.87.0/dist/phaser.min.js"></script>
+</head>
+<body>
+    <main>
+        <div id="phaser-container"></div>
+        <canvas id="gameCanvas"></canvas>
+        <div class="container">
+            <div class="scoreboard">ScoreBoard</div>
+            <div class="textfield-container">
+                <input
+                    id="userInput" 
+                    type="text"
+                    class="textfield"
+                    placeholder="Type the words here"
+                />
+                <button id="clearButton" class="action-button">
+                    <img src="../assets/icons/send.svg" alt="send" width="37">
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="/meteor.js"></script>
+</body>
+</html>
