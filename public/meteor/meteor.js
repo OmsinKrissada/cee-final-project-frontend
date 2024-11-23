@@ -1,9 +1,6 @@
-import "./style.css";
-//import Phaser from "phaser";
-
 const sizes = {
-  width: 500,
-  height: 500,
+  width: window.innerWidth,
+    height: window.innerHeight,
 };
 
 const speedDown = 300;
@@ -11,27 +8,38 @@ const speedDown = 300;
 class GameScene extends Phaser.Scene {
   constructor() {
     super("scene-game");
-    this.meteor;
+    this.smallMeteor;
+    this.largeMeteor;
   }
 
   preload() {
-    this.load.image("bg", "../assets/ENG4.png");
     this.load.image("met1", "../assets/meteor.png");
   }
 
   create() {
-    this.add.image(0, 0, "bg");
-    this.meteor = this.physics.add.image(sizes.width / 2, 0, "met1").setOrigin(0.5, 0.5).setVelocityY(speedDown);
-    this.meteor.setBounce(1);  
-    this.meteor.setCollideWorldBounds(true);
+    this.smallMeteor = this.physics.add.image(this.getRandomXForSmall(), 0, "met1").setOrigin(0, 0).setScale(0.1).setMaxVelocity(0, speedDown);
+    this.largeMeteor = this.physics.add.image(this.getRandomXForLarge(), 0, "met1").setOrigin(0, 0).setScale(0.2).setMaxVelocity(0, speedDown - 100);
   }
 
   update() {
-    if (this.meteor.y > sizes.height) {
-      this.meteor.setY(0);
+    if (this.smallMeteor.y > sizes.height) {
+      this.smallMeteor.setY(0).setX(this.getRandomXForSmall()).setVelocityY(speedDown);
+    }
+    if (this.largeMeteor.y > sizes.height) {
+      this.largeMeteor.setY(0).setX(this.getRandomXForLarge()).setVelocityY(speedDown - 100);
     }
   }
+
+  getRandomXForSmall() {
+    return Phaser.Math.Between(100, sizes.width-100);
+  }
+
+  getRandomXForLarge() {
+    return Phaser.Math.Between(300, sizes.width-300);
+  }
+
 }
+
 const config = {
   type: Phaser.WEBGL,
   width: sizes.width,
@@ -48,3 +56,26 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+
+
+const textField = document.getElementById("userInput");
+
+function sendText() {
+  textField.value = "";
+}
+
+const button = document.getElementById("clearButton");
+
+textField.addEventListener('keypress', e => {
+  if (e.code === 'Enter') {
+    sendText(); 
+  }
+});
+
+button.addEventListener("click", () => {
+  sendText(); 
+});
+
+window.addEventListener("resize", () => {
+  game.scale.resize(window.innerWidth, window.innerHeight);
+});
