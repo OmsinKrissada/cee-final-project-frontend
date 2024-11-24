@@ -119,16 +119,24 @@ h1 {
 }
 
 
-.login-button {
+.button-primary {
+  background-color: hsl(21, 86%, 25%);
+  box-shadow: 0 0.5rem 0 0 rgb(53, 27, 1);
+}
+
+.button-secondary {
+  background-color: hsl(21, 0%, 25%);
+  box-shadow: 0 0.5rem 0 0 hsl(30, 0%, 11%);
+}
+
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
   
   margin: 0px 0px;
   padding: 10px 30px;
-  background-color: hsl(21, 0%, 25%);
 
-  box-shadow: 0 0.5rem 0 0 hsl(30, 0%, 11%);
   border-radius: 0.5rem;
 
   color: white;
@@ -138,18 +146,18 @@ h1 {
   font-size: 16px;
 }
 
+.button:hover {
+  /* background-color: hsl(21, 86%, 30%); */
+  filter: brightness(1.2);
+  transform: translateY(2px);
+}
+
 #discord-login-button {
   /* border: 1.6px solid; */
   animation: rgbBorderPulse 3s infinite alternate; /* RGB border animation */
   background-color: hsl(235, 49%, 51%); /* blurple */
 
   box-shadow: 0 0.5rem 0 0 hsl(235, 49%, 30%);
-}
-
-.login-button:hover {
-  /* background-color: hsl(21, 86%, 30%); */
-  filter: brightness(1.2);
-  transform: translateY(2px);
 }
 
 @keyframes rgbBorderPulse {

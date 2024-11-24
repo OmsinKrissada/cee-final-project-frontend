@@ -7,23 +7,26 @@ class API {
 	 * @param {object} data 
 	 * @param {string} method 
 	 */
-	#fetchAuth(path, data, method) {
+	async #fetchAuth(path, data, method) {
 		let headers = {
 			"Content-Type": "application/json",
 		};
 		const token = localStorage.getItem('token');
 		if (token) {
 			headers["Authorization"] = `Bearer ${token}`;
-			console.log(`token exists ${JSON.stringify(headers)}`);
 		}
-		return fetch(
+
+		// TODO: differentiate 4xx/5xx responses from network error
+		const response = await fetch(
 			BACKEND_URL + path,
 			{
 				method,
 				headers,
 				body: JSON.stringify(data),
 			}
-		).then(r => r.json());
+		);
+
+		return await response.json();
 	}
 
 	/**

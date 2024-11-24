@@ -1,4 +1,5 @@
 import api from "./api.js";
+// import userData from "./userData.js";
 
 // let nickname = null;
 let isEditable = false;
@@ -20,6 +21,7 @@ export async function changeNickname() {
 
 	isEditable = false;
 
+	// userData.updateLocal('nickname', newNickname);
 	await api.post(`/player/nickname`, {
 		nickname: newNickname
 	});

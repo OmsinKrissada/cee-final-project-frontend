@@ -30,15 +30,21 @@
   
   <div class="container">
     <h1>Defend Our Faculty</h1>
-    <!-- TODO: change OAuth url to production -->
-    <a id="discord-login-button" class="login-button">
-      <img src="assets/icons/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
-      Continue with Discord
-    </a>
-    <p>OR</p>
-    <a class="login-button">
-      Continue as guest
-    </a>
+     <div id="when-logged-out" style="display: none;">
+       <a id="discord-login-button" class="button">
+         <img src="assets/icons/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
+         Continue with Discord
+        </a>
+        <p>OR</p>
+        <a id="guest-login-button" class="button button-secondary">
+          Continue as guest
+        </a>
+      </div>
+     <div id="when-logged-in" style="display: none;">
+        <a class="button button-primary">
+          Play now
+        </a>
+      </div>
   </div>
 
   <div class="leaderboard-container">
