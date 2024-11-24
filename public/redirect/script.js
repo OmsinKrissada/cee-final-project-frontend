@@ -1,4 +1,4 @@
-import api from "./api.js";
+import api from "../scripts/api.js";
 
 const sp = new URLSearchParams(window.location.search);
 

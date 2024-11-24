@@ -25,20 +25,30 @@
     <button id="nickname-submit" class="nickname-submit" aria-label="Edit Nickname">
       <img src="assets/icons/edit.svg" width="28" alt="Edit Icon">
     </button>
+    <button id="logout-button" class="button">
+      <span>Logout</span>
+    </button>
   </div>
   
   
   <div class="container">
     <h1>Defend Our Faculty</h1>
-    <!-- TODO: change OAuth url to production -->
-    <a id="discord-login-button" class="login-button">
-      <img src="assets/icons/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
-      Continue with Discord
-    </a>
-    <p>OR</p>
-    <a class="login-button">
-      Continue as guest
-    </a>
+     <div id="when-logged-out" style="display: none;">
+       <a id="discord-login-button" class="button">
+         <img src="assets/icons/discord-mark-white.svg" width="28" style="margin-right: 0.6rem;">
+         Continue with Discord
+        </a>
+        <p>OR</p>
+        <a id="guest-login-button" class="button button-secondary">
+          Continue as guest
+        </a>
+        <p style="color: gray">Use Discord login to save your progress across devices</p>
+      </div>
+     <div id="when-logged-in" style="display: none;">
+        <a class="button button-primary" href="/game">
+          Play now
+        </a>
+      </div>
   </div>
 
   <div class="leaderboard-container">
