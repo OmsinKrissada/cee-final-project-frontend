@@ -1,3 +1,5 @@
+if (!localStorage.getItem('token')) window.location.href = '/';
+
 const config = {
     type: Phaser.AUTO,
     width: window.innerWidth,

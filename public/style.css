@@ -121,15 +121,19 @@ h1 {
 
 .button-primary {
   background-color: hsl(21, 86%, 25%);
-  box-shadow: 0 0.5rem 0 0 rgb(53, 27, 1);
+  box-shadow: var(--button-box-shadow-props) rgb(53, 27, 1);
 }
 
 .button-secondary {
   background-color: hsl(21, 0%, 25%);
-  box-shadow: 0 0.5rem 0 0 hsl(30, 0%, 11%);
+  box-shadow: var(--button-box-shadow-props) hsl(30, 0%, 11%);
 }
 
 .button {
+  --button-box-shadow-props: 0 0.4rem 0 0;
+
+  border: none;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,6 +148,8 @@ h1 {
 
   text-decoration: none;
   font-size: 16px;
+
+  cursor: pointer;
 }
 
 .button:hover {
@@ -157,7 +163,12 @@ h1 {
   animation: rgbBorderPulse 3s infinite alternate; /* RGB border animation */
   background-color: hsl(235, 49%, 51%); /* blurple */
 
-  box-shadow: 0 0.5rem 0 0 hsl(235, 49%, 30%);
+  box-shadow: var(--button-box-shadow-props) hsl(235, 49%, 30%);
+}
+
+#logout-button {
+  background-color: #7f1d1d;
+  box-shadow: var(--button-box-shadow-props) #410606;
 }
 
 @keyframes rgbBorderPulse {
@@ -178,10 +189,10 @@ h1 {
 .leaderboard-container {
   display: flex;
   justify-content: center;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   
   width: 100%;
-  margin-top: 10rem;
+  /* margin-top: 10rem; */
 
   gap: 1rem;
 }
