@@ -1,3 +1,4 @@
+import api from './api.js';
 import { getNickname } from './nickname.js';
 
 getNickname();
@@ -6,6 +7,15 @@ getNickname();
 const discordLoginButton = document.getElementById('discord-login-button');
 const oauthUrl = `https://discord.com/oauth2/authorize?client_id=808361107118096454&response_type=code&redirect_uri=${encodeURIComponent(window.location.origin + '/redirect')}&scope=identify`;
 discordLoginButton.setAttribute('href', oauthUrl);
+
+const guestLoginButton = document.getElementById('guest-login-button');
+guestLoginButton.addEventListener('click', async () => {
+	const { token } = await api.post('/auth/login/guest');
+	if (token) {
+		localStorage.setItem('token', token);
+	}
+	window.location.reload();
+});
 
 document.getElementById('logout-button').addEventListener('click', () => {
 	localStorage.removeItem('token');
