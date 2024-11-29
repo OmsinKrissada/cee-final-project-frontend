@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Room Selection</title>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../global.css">
+</head>
+
+<body class="text-white" style="background-color: #130a01; font-family: var(--content-font);">
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Select Room</h1>
+
+    <!-- Room Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+
+      <!-- Add Room Card -->
+      <div class="flex items-center justify-center cursor-pointer hover:bg-gray-200 p-6 border rounded-lg">
+        <button class="bg-gray-300 rounded-full w-20 h-20 flex items-center justify-center">
+          <span class="text-4xl font-bold">+</span>
+        </button>
+      </div>
+
+      <!-- Example Room Card -->
+      <div class="rounded-lg shadow-md" style="background-color: rgb(56, 29, 11);">
+        <div class="p-4">
+          <h2 class="font-bold text-xl">Room #1</h2>
+        </div>
+        <div class="p-4 flex items-center justify-between text-sm text-gray-600">
+          <div>
+            <img src="/assets/icons/users.svg" alt="">
+            <span class="flex items-center">
+              2/4
+            </span>
+          </div>
+        </div>
+        <div class="p-4">
+          <button class="button button-primary w-full">Join Room</button>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+</body>
+
+</html>

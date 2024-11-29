@@ -1,0 +1,146 @@
+@import url(../global.css);
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #130a01;
+  }
+  
+  .container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 16px;
+  }
+  
+  .title {
+	font-size: 2rem;
+	font-weight: bold;
+	margin-bottom: 16px;
+  }
+  
+  .grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+	gap: 16px;
+  }
+  
+  .card {
+	background: white;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+  }
+  
+  .create-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	background-color: #f1f1f1;
+  }
+  
+  .icon-button {
+	font-size: 2rem;
+	border: none;
+	background: none;
+	cursor: pointer;
+  }
+  
+  .card-header {
+	margin-bottom: 8px;
+  }
+  
+  .card-title {
+	font-size: 1.25rem;
+	font-weight: bold;
+  }
+  
+  .card-description {
+	font-size: 0.875rem;
+	color: #666;
+  }
+  
+  .card-content {
+	margin-bottom: 8px;
+  }
+  
+  .card-details {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.875rem;
+	color: #999;
+  }
+  
+  .card-footer {
+	text-align: center;
+  }
+  
+  .join-button {
+	padding: 8px 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  .join-button:disabled {
+	background-color: #ccc;
+	cursor: not-allowed;
+  }
+  
+  .modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  .modal-card {
+	background: white;
+	border-radius: 8px;
+	padding: 16px;
+	width: 100%;
+	max-width: 400px;
+  }
+  
+  .modal-form {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+  }
+  
+  .modal-footer {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
+  }
+  
+  .cancel-button,
+  .create-button {
+	padding: 8px 16px;
+	border: none;
+	border-radius: 4px;
+  }
+  
+  .cancel-button {
+	background: #ddd;
+  }
+  
+  .create-button {
+	background: #007bff;
+	color: white;
+	cursor: pointer;
+  }
+  
+
+  /* background-color: hsl(21, 86%, 25%);
+  box-shadow: var(--button-box-shadow-props) rgb(53, 27, 1); */
