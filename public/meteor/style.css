@@ -63,6 +63,26 @@ body {
     pointer-events: auto; 
 }
 
+.scoretext {
+    position: absolute;
+    top: 4%;  
+    left: 3%; 
+    width: 10vw;  
+    height: 8vh;  
+    background-color: #9a5506;
+    color: white;
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+    font-size: 1.5vw;
+    font-weight: bold;
+    border-radius: 5px;
+    padding-left: 10px; 
+    text-align: left; 
+    pointer-events: auto; 
+}
+
+
 .textfield-container {
     position: relative;
     bottom: 8%;

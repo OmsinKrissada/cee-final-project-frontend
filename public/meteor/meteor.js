@@ -13,7 +13,6 @@ class GameScene extends Phaser.Scene {
     // this.smallWordBox = null;
     // this.largeWordBox = null;
     this.score = 0;
-    this.scoreText = null;
     this.inputText = "";
   }
 
@@ -24,11 +23,6 @@ class GameScene extends Phaser.Scene {
   create() {
     this.firstMeteor = this.createMeteorAndWord("game", this.getRandomXForSmall(), 0); // fix word "game" แก้ทีหลังได้
     this.secondMeteor = this.createMeteorAndWord("start", this.getRandomXForLarge(), 0); // fix word "start" แก้ทีหลังได้
-
-    this.scoreText = this.add.text(10, 10, 'Score: 0', {
-      font: '20px Arial',
-      fill: '#fff',
-    });
 
     this.inputField = document.getElementById("userInput");
 
@@ -47,7 +41,7 @@ class GameScene extends Phaser.Scene {
   }
 
   createMeteorAndWord(word, xPosition, yPosition) {
-    const scale  = word.length <= 4 ? 0.1 : 0.2;
+    const scale  = word.length <= 7 ? 0.1 : 0.2;
 
     const meteor = this.physics.add.image(xPosition, 0, "met1")
       .setOrigin(0, 0)
@@ -55,9 +49,8 @@ class GameScene extends Phaser.Scene {
       .setMaxVelocity(0, speedDown);
 
     const wordBox = this.add.text(xPosition + meteor.displayWidth / 2, yPosition + meteor.displayHeight / 2, word, {
-      backgroundColor: "#ffffff",
-      font: `${Math.round(scale * 300)}px Arial`, 
-      fill: "#000000",
+      font: `${Math.round(scale * 200)}px Arial`, 
+      fill: "#ffffff",
       align: "center",
       padding: { left: 5, right: 5, top: 5, bottom: 5 },
       wordWrap: { width: 200, useAdvancedWrap: true },
@@ -78,14 +71,14 @@ class GameScene extends Phaser.Scene {
 
   resetMeteorAndWord(pair) {
     const newWord = this.getRandomWord(); 
-    const xPosition = newWord.length <= 4 ? this.getRandomXForSmall() : this.getRandomXForLarge();  
+    const xPosition = newWord.length <= 7 ? this.getRandomXForSmall() : this.getRandomXForLarge();  
 
-    pair.meteor.setY(0).setX(xPosition).setScale(newWord.length <= 4 ? 0.1 : 0.2);
-    pair.wordBox.setText(newWord).setFont(`${Math.round(newWord.length <= 4 ? 0.1 * 300 : 0.2 * 300)}px Arial`);
+    pair.meteor.setY(0).setX(xPosition).setScale(newWord.length <= 7 ? 0.1 : 0.2);
+    pair.wordBox.setText(newWord).setFont(`${Math.round(newWord.length <= 7 ? 0.1 * 200 : 0.2 * 200)}px Arial`);
   }
 
   getRandomWord() {
-    const words = ['game', 'start', 'sky', 'energy', 'meteor', 'stars', 'fall', 'explosion', 'space'];
+    const words = ['game', 'start', 'sky', 'energy', 'meteor', 'stars', 'fall', 'explosion', 'space', 'implement'];
     return words[Phaser.Math.Between(0, words.length - 1)];
   }
 
@@ -99,8 +92,10 @@ class GameScene extends Phaser.Scene {
 
   checkWordMatch(pair) {
     if (this.inputField.value.toLowerCase() === pair.wordBox.text.toLowerCase()) {
-      this.score += 10;
-      this.scoreText.setText('Score: ' + this.score);
+      this.score += 100;
+      const scoreElement = document.getElementById("scoreText");
+      scoreElement.innerText = 'Score: ' + this.score;
+
       this.resetMeteorAndWord(pair); 
     }
   }
