@@ -5,10 +5,7 @@ body {
   padding: 0;
   font-family: var(--content-font);
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
 
   height: 100vh;
 
@@ -23,6 +20,23 @@ body {
 
   color: white;
 }
+
+.nav {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  height: 60px;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: calc(100vh - 60px);
+}
+
 
 .container {
   display: flex;
@@ -55,7 +69,7 @@ h1 {
   filter: blur(20px);
   transition: filter 0.2s;
 
-  position: absolute;
+  /* position: absolute; */
   top: 20px;
   left: 20px;
   align-items: center;
@@ -67,6 +81,10 @@ h1 {
 
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(8px);
+
+  /* max-width: 200px;
+  min-width: max-content; */
+  width: 200px;
 }
 
 .nickname-input {
@@ -119,44 +137,6 @@ h1 {
 }
 
 
-.button-primary {
-  background-color: hsl(21, 86%, 25%);
-  box-shadow: var(--button-box-shadow-props) rgb(53, 27, 1);
-}
-
-.button-secondary {
-  background-color: hsl(21, 0%, 25%);
-  box-shadow: var(--button-box-shadow-props) hsl(30, 0%, 11%);
-}
-
-.button {
-  --button-box-shadow-props: 0 0.4rem 0 0;
-
-  border: none;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  
-  margin: 0px 0px;
-  padding: 10px 30px;
-
-  border-radius: 0.5rem;
-
-  color: white;
-  /* border-radius: 20px; */
-
-  text-decoration: none;
-  font-size: 16px;
-
-  cursor: pointer;
-}
-
-.button:hover {
-  /* background-color: hsl(21, 86%, 30%); */
-  filter: brightness(1.2);
-  transform: translateY(2px);
-}
 
 #discord-login-button {
   /* border: 1.6px solid; */
@@ -169,6 +149,7 @@ h1 {
 #logout-button {
   background-color: #7f1d1d;
   box-shadow: var(--button-box-shadow-props) #410606;
+  font-family: var(--content-font);
 }
 
 @keyframes rgbBorderPulse {
