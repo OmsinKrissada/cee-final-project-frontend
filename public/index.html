@@ -7,13 +7,15 @@
   <link rel="stylesheet" href="style.css">
   <!-- <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet"> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
 </head>
 
 <script type="module" src="scripts/main.js" defer></script>
 
 <body>
+  <div class="nav">
   <div id="nickname-box">
     <input 
       type="text" 
@@ -28,9 +30,11 @@
     <button id="logout-button" class="button">
       <span>Logout</span>
     </button>
-  </div>
+  </div>  
+</div>
+
   
-  
+<section>
   <div class="container">
     <h1>Defend Our Faculty</h1>
      <div id="when-logged-out" style="display: none;">
@@ -45,7 +49,7 @@
         <p style="color: gray">Use Discord login to save your progress across devices</p>
       </div>
      <div id="when-logged-in" style="display: none;">
-        <a class="button button-primary" href="/game">
+        <a class="button button-primary" href="/lobby">
           Play now
         </a>
       </div>
@@ -115,26 +119,7 @@
     </div>
   </div>
 </div>
-  
-  
-  <!-- <div class="leaderboards">
-    <div class="leaderboard-box">
-      <div class="leaderboard-title">Top Scores</div>
-      <div class="score-item">OmsimZa</div>
-      <div class="score-item">LLLLLLL</div>
-      <div class="score-item">Bestttt</div>
-      <div class="score-item">X</div>
-      <div class="score-item">X</div>
+</section>
 
-    </div>
-    <div class="leaderboard-box">
-      <div class="leaderboard-title">All Times</div>
-      <div class="score-item">OmsimZa</div>
-      <div class="score-item">LLLLLLL</div>
-      <div class="score-item">Bestttt</div>
-      <div class="score-item">X</div>
-      <div class="score-item">X</div>
-    </div>
-  </div> -->
 </body>
 </html>
