@@ -84,25 +84,3 @@ async function handleJoinRoom(roomId) {
 		renderRooms(updated);
 	}
 }
-
-// function renderRooms(rooms) {
-// 	const roomsContainer = document.getElementById('rooms-container');
-// 	roomsContainer.innerHTML = '';
-
-// 	rooms.forEach(room => {
-// 		const roomElement = document.createElement('div');
-// 		roomElement.classList.add('room');
-// 		roomElement.innerHTML = `
-//             <h2>${room.name}</h2>
-//             <p>Players waiting: ${room.players}/${room.capacity}</p>
-//         `;
-// 		roomElement.addEventListener('click', () => {
-// 			handleJoinRoom(room.id);
-// 		});
-// 		roomsContainer.appendChild(roomElement);
-// 	});
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-// 	renderRooms(rooms);
-// });
