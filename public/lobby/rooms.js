@@ -23,8 +23,17 @@ function renderRooms(rooms) {
 
 	rooms.forEach(room => {
 		const ownerName = room.players.filter(p => p.id == room.owner)[0]?.nickname || 'Somebody';
+
 		const roomElement = document.createElement('div');
 		roomElement.classList.add('room');
+
+		const btnContainer = document.createElement('div');
+		btnContainer.classList.add('p-4');
+		const btn = document.createElement('button');
+		btn.classList.add('button', 'button-primary', 'w-full');
+		btn.textContent = 'Join Room';
+		btnContainer.appendChild(btn);
+
 		roomElement.innerHTML = `
         <div class="rounded-lg box" style="background-color: rgb(56, 29, 11);">
           <div class="flex p-4">
@@ -36,55 +45,44 @@ function renderRooms(rooms) {
           </div>
           <div class="p-4 flex items-center justify-between text-sm">
             <ul>
-              ${room.players.map(p => `<li>- ${p.nickname}</li>`)}
+              ${room.players.map(p => `<li>- ${p.nickname}</li>`).join('')}
             </ul>
-          </div>
-          <div class="p-4">
-            <button class="button button-primary w-full">Join Room</button>
           </div>
         </div>
         `;
-		roomElement.addEventListener('click', () => {
-			selectRoom(room.id);
-		});
+		roomElement.firstElementChild.appendChild(btnContainer);
 		roomsContainer.appendChild(roomElement);
-	});
-}
 
-function selectRoom(roomId) {
-	window.location.href = `/game?roomId=${roomId}`;
+		btn.addEventListener('click', () => {
+			console.log(`joining ${room._id}`);
+			handleJoinRoom(room._id);
+		});
+	});
 }
 
 // room creation
 
 document.getElementById('add-button').addEventListener('click', handleCreateRoom);
 
-async function handleCreateRoom(e) {
-	// e.preventDefault();
-	// const newRoom = {
-	// 	id: (rooms.length + 1).toString(),
-	// 	name: newRoomName,
-	// 	gameType: newRoomType,
-	// 	players: 0,
-	// 	capacity: 4,
-	// };
-	// rooms.push(newRoom);
-	// newRoomName = '';
-	// newRoomType = '';
-	// showCreateModal = false;
-	// renderRooms(rooms);
+async function handleCreateRoom() {
 	try {
-		const updatedRooms = await api.post('/game');
-		if (updatedRooms.length) {
-			renderRooms(updatedRooms);
+		const updated = await api.post('/game');
+		if (updated?.length) {
+			renderRooms(updated);
 		}
 	} catch (err) {
 		console.warn(err);
 	}
 }
 
-function handleJoinRoom(roomId) {
+// room joining
+
+async function handleJoinRoom(roomId) {
 	console.log(`Joining room ${roomId}`);
+	const updated = await api.put('/game/join/' + roomId);
+	if (updated?.length) {
+		renderRooms(updated);
+	}
 }
 
 // function renderRooms(rooms) {
