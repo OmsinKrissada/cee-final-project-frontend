@@ -49,7 +49,8 @@ function renderRooms(rooms) {
 
 	rooms = rooms.sort((a, b) => {
 		if (a.id == occupiedRoom) return -1;
-		return b.id - a.id;
+		if (b.id == occupiedRoom) return 1;
+		return a.id.localeCompare(b.id);
 	});
 
 	rooms.forEach(room => {
