@@ -1,47 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-    --title-font: 'Press Start 2P', serif;
-    --content-font: 'Quantico', sans-serif;
+  --title-font: 'Press Start 2P', serif;
+  --content-font: 'Quantico', sans-serif;
 }
 
 
 .button {
-    --button-box-shadow-props: 0 0.4rem 0 0;
-  
-    border: none;
-  
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    margin: 0px 0px;
-    padding: 10px 30px;
-  
-    border-radius: 0.5rem;
-  
-    color: white;
-    /* border-radius: 20px; */
-  
-    text-decoration: none;
-    font-size: 16px;
-  
-    cursor: pointer;
-  }
-  
-  .button:hover {
-    /* background-color: hsl(21, 86%, 30%); */
-    filter: brightness(1.2);
-    transform: translateY(2px);
-  }
+  --button-box-shadow-props: 0 0.4rem 0 0;
 
-  
+  border: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0px 0px;
+  padding: 10px 30px;
+
+  border-radius: 0.5rem;
+
+  color: white;
+  /* border-radius: 20px; */
+
+  text-decoration: none;
+  font-size: 16px;
+
+  cursor: pointer;
+}
+
+.button:hover {
+  /* background-color: hsl(21, 86%, 30%); */
+  filter: brightness(1.2);
+  transform: translateY(2px);
+}
+
+
 .button-primary {
-    background-color: hsl(21, 86%, 25%);
-    box-shadow: var(--button-box-shadow-props) rgb(53, 27, 1);
-  }
-  
-  .button-secondary {
-    background-color: hsl(21, 0%, 25%);
-    box-shadow: var(--button-box-shadow-props) hsl(30, 0%, 11%);
-  }
+  background-color: hsl(21, 86%, 25%);
+  box-shadow: var(--button-box-shadow-props) rgb(53, 27, 1);
+}
+
+.button-secondary {
+  background-color: hsl(21, 0%, 25%);
+  box-shadow: var(--button-box-shadow-props) hsl(30, 0%, 11%);
+}
+
+.button-red {
+  background-color: #7f1d1d;
+  box-shadow: var(--button-box-shadow-props) #410606;
+  font-family: var(--content-font);
+}
+
+.button-green {
+  background-color: #1d7f35;
+  box-shadow: var(--button-box-shadow-props) #064121;
+  font-family: var(--content-font);
+}
+
+.button:disabled {
+  cursor: wait;
+  transform: translateY(2px);;
+  color: whitesmoke;
+  filter: brightness(0.8);
+}

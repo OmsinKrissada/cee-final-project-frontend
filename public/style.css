@@ -146,12 +146,6 @@ h1 {
   box-shadow: var(--button-box-shadow-props) hsl(235, 49%, 30%);
 }
 
-#logout-button {
-  background-color: #7f1d1d;
-  box-shadow: var(--button-box-shadow-props) #410606;
-  font-family: var(--content-font);
-}
-
 @keyframes rgbBorderPulse {
   0% {
     border-color: rgb(255, 0, 0);
