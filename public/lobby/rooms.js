@@ -1,10 +1,26 @@
 import api from "../scripts/api.js";
+import { BACKEND_URL } from "../scripts/config.js";
 
 // room rendering
 
 document.addEventListener('DOMContentLoaded', () => {
 	fetchRooms();
+	connectWithSSE();
 });
+
+function connectWithSSE() {
+	const es = new EventSource(`${BACKEND_URL}/game/stream/lobby`);
+
+	es.addEventListener("update", (msg) => {
+		const body = JSON.parse(msg.data);
+		console.log('got update');
+		renderRooms(body);
+	});
+
+	es.onopen = () => {
+		console.log("open");
+	};
+}
 
 async function fetchRooms() {
 	try {
@@ -60,7 +76,7 @@ function renderRooms(rooms) {
 		roomElement.classList.add('room');
 
 		const btnContainer = document.createElement('div');
-		btnContainer.classList.add('flex', 'gap-2', 'p-4');
+		btnContainer.classList.add('flex', 'gap-2', 'p-4', 'mt-auto');
 
 		if (occupiedRoom == room.id) {
 			if (isOwner) {
