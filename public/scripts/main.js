@@ -10,9 +10,10 @@ discordLoginButton.setAttribute('href', oauthUrl);
 
 const guestLoginButton = document.getElementById('guest-login-button');
 guestLoginButton.addEventListener('click', async () => {
-	const { token } = await api.post('/auth/login/guest');
-	if (token) {
+	const { token, userId } = await api.post('/auth/login/guest');
+	if (token && userId) {
 		localStorage.setItem('token', token);
+		localStorage.setItem('userId', userId);
 	}
 	window.location.reload();
 });

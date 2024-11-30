@@ -46,6 +46,9 @@ export async function getNickname() {
 			box.style.opacity = 1;
 			box.style.filter = 'blur(0)';
 		}, 0);
+	} else if (localStorage.getItem('token')) {
+		localStorage.clear();
+		window.location.reload();
 	}
 }
 
