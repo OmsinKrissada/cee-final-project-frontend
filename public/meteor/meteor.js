@@ -17,7 +17,7 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("met1", "../assets/meteor.png");
+    this.load.image("met1", "../assets/AllMeteor/meteor7.png");
   }
 
   create() {
@@ -41,7 +41,7 @@ class GameScene extends Phaser.Scene {
   }
 
   createMeteorAndWord(word, xPosition, yPosition) {
-    const scale  = word.length <= 7 ? 0.1 : 0.2;
+    const scale  = word.length <= 7 ? 0.5 : 0.7;
 
     const meteor = this.physics.add.image(xPosition, 0, "met1")
       .setOrigin(0, 0)
@@ -49,10 +49,10 @@ class GameScene extends Phaser.Scene {
       .setMaxVelocity(0, speedDown);
 
     const wordBox = this.add.text(xPosition + meteor.displayWidth / 2, yPosition + meteor.displayHeight / 2, word, {
-      font: `${Math.round(scale * 200)}px Arial`, 
+      font: `${Math.round(scale * 50)}px 'MyFont'`, 
       fill: "#ffffff",
       align: "center",
-      padding: { left: 5, right: 5, top: 5, bottom: 5 },
+      padding: { left: 2, right: 2, top: 2, bottom: 2 },
       wordWrap: { width: 200, useAdvancedWrap: true },
     }).setOrigin(0.5);
 
@@ -73,8 +73,8 @@ class GameScene extends Phaser.Scene {
     const newWord = this.getRandomWord(); 
     const xPosition = newWord.length <= 7 ? this.getRandomXForSmall() : this.getRandomXForLarge();  
 
-    pair.meteor.setY(0).setX(xPosition).setScale(newWord.length <= 7 ? 0.1 : 0.2);
-    pair.wordBox.setText(newWord).setFont(`${Math.round(newWord.length <= 7 ? 0.1 * 200 : 0.2 * 200)}px Arial`);
+    pair.meteor.setY(0).setX(xPosition).setScale(newWord.length <= 7 ? 0.5 : 0.7);
+    pair.wordBox.setText(newWord).setFont(`${Math.round(newWord.length <= 7 ? 0.5 * 50 : 0.7 * 50)}px 'MyFont'`);
   }
 
   getRandomWord() {

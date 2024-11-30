@@ -153,6 +153,11 @@ main {
     z-index: 1;                 
 } 
 
+@font-face {
+    font-family: 'MyFont';
+    src: url('../assets/AllFont/font1.ttf');
+}
+
 /*#gameCanvas {
     border: 1px solid red;
     position: absolute;
