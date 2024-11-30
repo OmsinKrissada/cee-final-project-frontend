@@ -3,118 +3,127 @@ const sizes = {
   height: window.innerHeight,
 };
 
-const speedDown = 250;
+const speedDown = 175; 
+const words = ['game', 'start', 'sky', 'energy', 'meteor', 'stars', 'fall', 'explosion', 'space', 'implement'];
 
 class GameScene extends Phaser.Scene {
   constructor() {
     super("scene-game");
-    this.firstMeteor = null;
-    this.secondMeteor = null;
-    // this.smallWordBox = null;
-    // this.largeWordBox = null;
+    this.meteors = [];  
     this.score = 0;
     this.inputText = "";
   }
 
   preload() {
-    this.load.image("met1", "../assets/AllMeteor/meteor7.png");
+    this.load.image("met1", "../assets/AllMeteor/meteor7.png");  
   }
 
   create() {
-    this.firstMeteor = this.createMeteorAndWord("game", this.getRandomXForSmall(), 0); // fix word "game" แก้ทีหลังได้
-    this.secondMeteor = this.createMeteorAndWord("start", this.getRandomXForLarge(), 0); // fix word "start" แก้ทีหลังได้
+    this.addMeteor();  
+    this.addMeteor();  
 
     this.inputField = document.getElementById("userInput");
 
     window.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
-        this.checkWordMatch(this.firstMeteor);
-        this.checkWordMatch(this.secondMeteor);
+        this.meteors.forEach(meteor => this.checkWordMatch(meteor));
         this.inputField.value = "";  
       }
     });
+
+    setInterval(() => {
+      this.addMeteor(); 
+    }, 30000); 
+
+    this.updateScoreDisplay();
   }
 
   update() {
-    this.updateMeteorAndWord(this.firstMeteor, speedDown);
-    this.updateMeteorAndWord(this.secondMeteor, speedDown - 100);
+    this.meteors.forEach(meteor => {
+      this.updateMeteorAndWord(meteor, speedDown);
+    });
+  }
+
+  addMeteor() {
+    const word = this.getRandomWord();
+    const xPosition = this.getRandomXForPosition();
+    const yPosition = 0;
+
+    const meteor = this.createMeteorAndWord(word, xPosition, yPosition);
+    this.meteors.push(meteor);
   }
 
   createMeteorAndWord(word, xPosition, yPosition) {
-    const scale  = word.length <= 7 ? 0.5 : 0.7;
+    const scale = word.length <= 7 ? 0.5 : 0.7;
 
-    const meteor = this.physics.add.image(xPosition, 0, "met1")
+    const meteor = this.physics.add.image(xPosition, yPosition, "met1")
       .setOrigin(0, 0)
       .setScale(scale)
       .setMaxVelocity(0, speedDown);
 
     const wordBox = this.add.text(xPosition + meteor.displayWidth / 2, yPosition + meteor.displayHeight / 2, word, {
-      font: `${Math.round(scale * 50)}px 'MyFont'`, 
+      font: `${scale * 50}px 'MyFont'`,
       fill: "#ffffff",
-      align: "center",
-      padding: { left: 2, right: 2, top: 2, bottom: 2 },
-      wordWrap: { width: 200, useAdvancedWrap: true },
+      fontWeight: "bold",
     }).setOrigin(0.5);
 
-    return { meteor, wordBox };
+    return { meteor, wordBox, word };
   }
 
-  updateMeteorAndWord(pair, velocityY) {
-    pair.meteor.setVelocityY(velocityY);
-    pair.wordBox.y = pair.meteor.y + pair.meteor.displayHeight / 2;
-    pair.wordBox.x = pair.meteor.x + pair.meteor.displayWidth / 2;
+  updateMeteorAndWord(meteorData, speed) {
+    meteorData.meteor.y += speed * this.game.loop.delta / 1000;
 
-    if (pair.meteor.y > sizes.height) {
-      this.resetMeteorAndWord(pair);
+    meteorData.wordBox.setPosition(meteorData.meteor.x + meteorData.meteor.displayWidth / 2, meteorData.meteor.y + meteorData.meteor.displayHeight / 2);
+
+    if (meteorData.meteor.y > sizes.height) {
+      this.resetMeteor(meteorData);
     }
   }
 
-  resetMeteorAndWord(pair) {
-    const newWord = this.getRandomWord(); 
-    const xPosition = newWord.length <= 7 ? this.getRandomXForSmall() : this.getRandomXForLarge();  
+  resetMeteor(meteorData) {
+    meteorData.meteor.y = 0;
+    meteorData.meteor.x = this.getRandomXForPosition();
+    meteorData.wordBox.setPosition(meteorData.meteor.x + meteorData.meteor.displayWidth / 2, meteorData.meteor.y + meteorData.meteor.displayHeight / 2);
+    meteorData.word = this.getRandomWord();  
+    meteorData.wordBox.setText(meteorData.word);  
+  }
 
-    pair.meteor.setY(0).setX(xPosition).setScale(newWord.length <= 7 ? 0.5 : 0.7);
-    pair.wordBox.setText(newWord).setFont(`${Math.round(newWord.length <= 7 ? 0.5 * 50 : 0.7 * 50)}px 'MyFont'`);
+  checkWordMatch(meteorData) {
+    if (this.inputField.value === meteorData.word) {
+      this.score++;
+      this.updateScoreDisplay(); 
+      this.resetMeteor(meteorData);
+    }
+  }
+
+  updateScoreDisplay() {
+    const scoreText = document.getElementById("scoreText");
+    scoreText.innerText = `MyScore : ${this.score}`;
   }
 
   getRandomWord() {
-    const words = ['game', 'start', 'sky', 'energy', 'meteor', 'stars', 'fall', 'explosion', 'space', 'implement'];
-    return words[Phaser.Math.Between(0, words.length - 1)];
+    return words[Math.floor(Math.random() * words.length)];
   }
 
-  getRandomXForSmall() {
-    return Phaser.Math.Between(100, sizes.width - 100);
-  }
-
-  getRandomXForLarge() {
-    return Phaser.Math.Between(300, sizes.width - 300);
-  }
-
-  checkWordMatch(pair) {
-    if (this.inputField.value.toLowerCase() === pair.wordBox.text.toLowerCase()) {
-      this.score += 100;
-      const scoreElement = document.getElementById("scoreText");
-      scoreElement.innerText = 'Score: ' + this.score;
-
-      this.resetMeteorAndWord(pair); 
-    }
+  getRandomXForPosition() {
+    return Math.floor(Math.random() * (sizes.width - 100)); // Adjust to avoid edge collision
   }
 }
 
 
 const config = {
-  type: Phaser.WEBGL,
+  type: Phaser.AUTO,
   width: sizes.width,
   height: sizes.height,
-  canvas: document.getElementById("gameCanvas"),
+  scene: GameScene,
+  parent: 'phaser-container',
   physics: {
-    default: "arcade",
+    default: 'arcade',
     arcade: {
-      gravity: { y: speedDown },
-      debug: false,
-    },
-  },
-  scene: [GameScene],
+      gravity: { y: 0 },
+      debug: false
+    }
+  }
 };
 
 const game = new Phaser.Game(config);
