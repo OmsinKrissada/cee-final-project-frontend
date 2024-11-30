@@ -1,0 +1,138 @@
+@import url(../global.css);
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: var(--content-font);
+    background-color: #170e01; /* Dark brown background */
+    color: #f8e8d6; /* Light beige text */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .room-title {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1rem;
+  }
+  
+  .score-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+    animation-delay: 1s; /* Delay the leaderboard animation */
+  }
+
+  .highlight-score {
+    color: #610ea9; /* Bright orange */
+    font-weight: bold;
+    text-shadow: 0px 0px 8px rgba(97, 6, 142, 0.823); /* Glow effect */
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+
+  .leaderboard-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+    width: 100%;
+    /* margin-top: 10rem; */
+  
+    gap: 1rem;
+  }
+  
+  .leaderboard {
+    width: 100%;
+    max-width: 22rem;
+    margin-top: 2rem;
+    background-color: rgba(13, 10, 0, 0.5);
+    color: #ffffff;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 10px rgba(229, 217, 149, 0.823);
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
+    animation-delay: 2s; /* Delay the leaderboard animation */
+  }
+  
+  .leaderboard-header {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  .leaderboard-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* leaderboard */
+  
+  .trophy {
+    margin-right: 0.5rem;
+    color: #ffffff;
+  }
+  
+  .leaderboard .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .leaderboard .table-head {
+    color: #ffffff;
+    text-align: left;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .leaderboard-score {
+    text-align: right;
+  }
+
+  .leaderboard-name {
+    text-align: left;
+  }
+
+  
+  .table-row {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .table-cell {
+    padding: 0.75rem 0;
+    color: #ffffff;
+  }
+  
+  .table-cell:first-child {
+    font-weight: 500;
+  }
+  
