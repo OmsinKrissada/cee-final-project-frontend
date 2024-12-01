@@ -17,6 +17,10 @@ class GameScene extends Phaser.Scene {
     this.inputText = "";
   }
 
+  ReturntoResultPage(name, score) {
+    //---------------------------------------------
+    
+  }
 
   // telemetry
 
@@ -52,6 +56,10 @@ class GameScene extends Phaser.Scene {
     this.connectWithSSE();
     // this.addMeteor();
     // this.addMeteor();
+
+    setTimeout(() => {
+      this.ReturntoResultPage("name", "score");
+    }, 120000);
 
     this.inputField = document.getElementById("userInput");
 
