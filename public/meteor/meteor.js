@@ -110,7 +110,7 @@ class GameScene extends Phaser.Scene {
   }
 
   getRandomXForPosition() {
-    return Math.floor(Math.random() * (sizes.width - 300)); // Adjust to avoid edge collision
+    return Math.floor(Math.random() * (sizes.width - 300)); 
   }
 }
 
