@@ -17,6 +17,12 @@ function connectWithSSE() {
 		renderRooms(body);
 	});
 
+	es.addEventListener("start", (msg) => {
+		const body = JSON.parse(msg.data);
+		console.log('got start event');
+		window.location.href = '/meteor';
+	});
+
 	es.onopen = () => {
 		console.log("open");
 	};
@@ -169,4 +175,12 @@ async function handleLeaveRoom(roomId) {
 	if (updated?.length) {
 		renderRooms(updated);
 	}
+}
+
+async function handleStartRoom(roomId) {
+	console.log(`Starting room ${roomId}`);
+	const updated = await api.put('/game/start/' + roomId);
+	// if (updated?.length) {
+	// 	renderRooms(updated);
+	// }
 }
