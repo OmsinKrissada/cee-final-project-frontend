@@ -80,6 +80,7 @@ body {
     padding-left: 10px; 
     text-align: left; 
     pointer-events: auto; 
+    font-family: 'MyFont';
 }
 
 
@@ -104,6 +105,7 @@ body {
     padding: 0 10px;
     font-size: 1.5vw;
     color: black;
+    font-family: 'MyFont';
 }
 
 .textfield::placeholder {
