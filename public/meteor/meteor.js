@@ -156,6 +156,7 @@ const config = {
   height: sizes.height,
   scene: GameScene,
   parent: 'phaser-container',
+  transparent: true,
   physics: {
     default: 'arcade',
     arcade: {
