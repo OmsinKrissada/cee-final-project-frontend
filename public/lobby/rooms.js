@@ -17,12 +17,6 @@ function connectWithSSE() {
 		renderRooms(body);
 	});
 
-	es.addEventListener("start", (msg) => {
-		const body = JSON.parse(msg.data);
-		console.log('got start event');
-		window.location.href = '/meteor';
-	});
-
 	es.onopen = () => {
 		console.log("open");
 	};
@@ -48,6 +42,10 @@ function disableButtons() {
 }
 
 function renderRooms(rooms) {
+	if (rooms.some(g => g.status == 'ongoing' && g.players.some(p => p.id == localStorage.getItem('userId')))) {
+		window.location.href = '/meteor';
+	}
+
 	roomsContainer.firstElementChild.removeAttribute('disabled');
 	actionButtons = [];
 
@@ -84,42 +82,43 @@ function renderRooms(rooms) {
 		const btnContainer = document.createElement('div');
 		btnContainer.classList.add('flex', 'gap-2', 'p-4', 'mt-auto');
 
-		if (occupiedRoom == room.id) {
-			if (isOwner) {
+		if (room.status == 'waiting') {
+			if (occupiedRoom == room.id) {
+				if (isOwner) {
+					const btn = document.createElement('button');
+					btn.classList.add('button', 'button-green', 'w-full');
+					btn.textContent = 'Start Game';
+					btn.addEventListener('click', () => {
+						btn.textContent = 'Starting...';
+						disableButtons();
+						handleStartRoom(room.id);
+					});
+					actionButtons.push(btn);
+					btnContainer.appendChild(btn);
+				}
+
 				const btn = document.createElement('button');
-				btn.classList.add('button', 'button-green', 'w-full');
-				btn.textContent = 'Start Game';
+				btn.classList.add('button', 'button-red', 'w-full');
+				btn.textContent = 'Leave Room';
 				btn.addEventListener('click', () => {
-					btn.textContent = 'Starting...';
+					btn.textContent = 'Leaving...';
 					disableButtons();
-					handleStartRoom(room.id);
+					handleLeaveRoom(room.id);
+				});
+				actionButtons.push(btn);
+				btnContainer.appendChild(btn);
+			} else if (!occupiedRoom) {
+				const btn = document.createElement('button');
+				btn.classList.add('button', 'button-primary', 'w-full');
+				btn.textContent = 'Join Room';
+				btn.addEventListener('click', () => {
+					btn.textContent = 'Joining...';
+					disableButtons();
+					handleJoinRoom(room.id);
 				});
 				actionButtons.push(btn);
 				btnContainer.appendChild(btn);
 			}
-
-			const btn = document.createElement('button');
-			btn.classList.add('button', 'button-red', 'w-full');
-			btn.textContent = 'Leave Room';
-			btn.addEventListener('click', () => {
-				btn.textContent = 'Leaving...';
-				disableButtons();
-				handleLeaveRoom(room.id);
-			});
-			actionButtons.push(btn);
-			btnContainer.appendChild(btn);
-		}
-		else if (!occupiedRoom) {
-			const btn = document.createElement('button');
-			btn.classList.add('button', 'button-primary', 'w-full');
-			btn.textContent = 'Join Room';
-			btn.addEventListener('click', () => {
-				btn.textContent = 'Joining...';
-				disableButtons();
-				handleJoinRoom(room.id);
-			});
-			actionButtons.push(btn);
-			btnContainer.appendChild(btn);
 		}
 
 		roomElement.innerHTML = `
