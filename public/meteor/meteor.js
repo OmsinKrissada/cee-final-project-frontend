@@ -20,7 +20,7 @@ class GameScene extends Phaser.Scene {
 
   create() {
     this.addMeteor();  
-    this.addMeteor();  
+    this.addMeteor();
 
     this.inputField = document.getElementById("userInput");
 
@@ -54,7 +54,7 @@ class GameScene extends Phaser.Scene {
   }
 
   createMeteorAndWord(word, xPosition, yPosition) {
-    const scale = word.length <= 7 ? 0.5 : 0.7;
+    const scale = word.length * 0.1;
 
     const meteor = this.physics.add.image(xPosition, yPosition, "met1")
       .setOrigin(0, 0)
@@ -62,10 +62,9 @@ class GameScene extends Phaser.Scene {
       .setMaxVelocity(0, speedDown);
 
     const wordBox = this.add.text(xPosition + meteor.displayWidth / 2, yPosition + meteor.displayHeight / 2, word, {
-      font: `${scale * 50}px 'MyFont'`,
+      font: `${50}px 'MyFont'`,
       fill: "#ffffff",
-      fontWeight: "bold",
-    }).setOrigin(0.5);
+    }).setOrigin(0.5).setScale(scale);
 
     return { meteor, wordBox, word };
   }
@@ -84,8 +83,13 @@ class GameScene extends Phaser.Scene {
     meteorData.meteor.y = 0;
     meteorData.meteor.x = this.getRandomXForPosition();
     meteorData.wordBox.setPosition(meteorData.meteor.x + meteorData.meteor.displayWidth / 2, meteorData.meteor.y + meteorData.meteor.displayHeight / 2);
-    meteorData.word = this.getRandomWord();  
-    meteorData.wordBox.setText(meteorData.word);  
+    meteorData.word = this.getRandomWord();
+
+    let temp_scale = meteorData.word.length * 0.1;
+    
+    meteorData.meteor.setScale(temp_scale);
+    meteorData.wordBox.setText(meteorData.word); 
+    meteorData.wordBox.setScale(temp_scale);
   }
 
   checkWordMatch(meteorData) {
@@ -106,7 +110,7 @@ class GameScene extends Phaser.Scene {
   }
 
   getRandomXForPosition() {
-    return Math.floor(Math.random() * (sizes.width - 100)); // Adjust to avoid edge collision
+    return Math.floor(Math.random() * (sizes.width - 300)); // Adjust to avoid edge collision
   }
 }
 
