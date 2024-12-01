@@ -84,7 +84,7 @@ class GameScene extends Phaser.Scene {
   }
 
   createMeteorAndWord(word, xPosition, yPosition) {
-    const scale = word.length * 0.1;
+    const scale = word.length * 0.125;
 
     const meteor = this.physics.add.image(xPosition, yPosition, "met1")
       .setOrigin(0, 0)
