@@ -5,6 +5,16 @@
     padding: 0;
     box-sizing: border-box;
   }
+
+  #background-video {
+    position: fixed; /* Fixed so it stays in place */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Make it cover the whole viewport width */
+    height: 100vh; /* Make it cover the whole viewport height */
+    object-fit: cover; /* Ensures the video scales proportionally */
+    z-index: -1; /* Places it behind all other elements */
+}
   
   body {
     font-family: var(--content-font);
