@@ -19,14 +19,17 @@ class GameScene extends Phaser.Scene {
 
   ReturntoResultPage(name, score) {
     //---------------------------------------------
-    
+
   }
 
   // telemetry
 
   async connectWithSSE() {
     const res = await api.get(`/game/playtoken`);
-    if (!res || !res.token) window.location.href = '/';
+    if (!res || !res.token) {
+      window.location.href = '/';
+      return;
+    }
 
     const es = new EventSource(`${BACKEND_URL}/game/stream/play/${res.token}`);
 
@@ -45,6 +48,15 @@ class GameScene extends Phaser.Scene {
     es.onopen = () => {
       console.log("open");
     };
+
+    es.onerror = (e) => {
+      console.log('error', e.status);
+      console.log(e);
+      es.close();
+      // this.connectWithSSE();
+      console.error('Connection with server interrupted, try refreshing...');
+    };
+
   }
 
 
