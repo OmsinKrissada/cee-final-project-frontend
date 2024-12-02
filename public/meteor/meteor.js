@@ -15,6 +15,7 @@ class GameScene extends Phaser.Scene {
     this.meteors = [];
     this.score = 0;
     this.inputText = "";
+    this.timeLeft = 120;
   }
 
   ReturntoResultPage(name, score) {
@@ -68,6 +69,7 @@ class GameScene extends Phaser.Scene {
     this.connectWithSSE();
     // this.addMeteor();
     // this.addMeteor();
+    this.startTimer();
 
     setTimeout(() => {
       this.ReturntoResultPage("name", "score");
@@ -93,6 +95,37 @@ class GameScene extends Phaser.Scene {
     this.meteors.forEach(meteor => {
       this.updateMeteorAndWord(meteor, speedDown);
     });
+  }
+
+  startTimer() {
+    this.timerEvent = this.time.addEvent({
+      delay: 1000, 
+      callback: this.updateTimer,
+      callbackScope: this,
+      loop: true
+    });
+  }
+
+  updateTimer() {
+    if (this.timeLeft > 0) {
+      this.timeLeft--;
+      this.updateTimerDisplay();
+    } else {
+      this.timerEvent.remove();
+      this.updateTimerDisplay(); 
+    }
+  }
+
+  updateTimerDisplay() {
+    let minutes = Math.floor(this.timeLeft / 60);
+    let seconds = this.timeLeft % 60;
+    if (seconds < 10) seconds = "0" + seconds; 
+    if (minutes < 10) minutes = "0" + minutes; 
+    document.getElementById("scoreText").innerText = `Time Left : ${minutes}:${seconds}`;
+  }
+
+  formatTime(time) {
+    return time < 10 ? `0${time}` : time;
   }
 
   addMeteor(word) {
