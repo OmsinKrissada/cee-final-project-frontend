@@ -48,7 +48,7 @@
   }
 
   .highlight-score {
-    color: #610ea9; /* Bright orange */
+    color: #9f3df5;
     font-weight: bold;
     text-shadow: 0px 0px 8px rgba(97, 6, 142, 0.823); /* Glow effect */
   }
@@ -146,3 +146,12 @@
     font-weight: 500;
   }
   
+  .back-button {
+    margin-top: 32px;
+    width: 100%;
+    font-family: var(--content-font);
+
+    opacity: 0;
+    animation: fadeInUp 1s forwards;
+    animation-delay: 2s; /* Delay the leaderboard animation */
+  }

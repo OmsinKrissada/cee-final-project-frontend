@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
     console.error(e);
     window.location.href = '/';
   }
-  console.log('aahhh');
   leaderboard.style.display = 'block';
 });
 
