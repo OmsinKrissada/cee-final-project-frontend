@@ -149,10 +149,15 @@ class GameScene extends Phaser.Scene {
 
   checkWordMatch(meteorData) {
     if (this.inputField.value === meteorData.word) {
-      this.score++;
-      this.updateScoreDisplay();
+      // this.score++;
+      this.handleCorrectWord(this.inputField.value);
+      // this.updateScoreDisplay();
       this.deleteMeteor(meteorData);
     }
+  }
+
+  handleCorrectWord(word) {
+    api.post('/game/type/' + word);
   }
 
   updateScoreDisplay() {
