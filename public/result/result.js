@@ -1,7 +1,42 @@
+const leaderboard = document.getElementById("leaderboard-container");
+
 document.addEventListener("DOMContentLoaded", () => {
-    const leaderboard = document.getElementById("leaderboard");
-    setTimeout(() => {
-      leaderboard.style.opacity = "1";
-      leaderboard.style.transform = "translateY(0)";
-    }, 2500); // Delay matches the CSS animation delay
-  });
+  try {
+    const encoded = new URLSearchParams(window.location.search).get('d');
+    console.log(encoded);
+    console.log(atob(encoded));
+    const parsed = JSON.parse(atob(encoded));
+    render(parsed);
+  } catch (e) {
+    console.error(e);
+    window.location.href = '/';
+  }
+  console.log('aahhh');
+  leaderboard.style.display = 'block';
+});
+
+function render(data) {
+  const parent = document.getElementById('player-list');
+
+  const userId = localStorage.getItem('userId');
+  // if(!userId)
+  document.getElementById('my-score').textContent = data.filter(p => p.id == userId)[0].score;
+
+  for (let i = 0; i < data.length; i++) {
+    const row = document.createElement('tr');
+    row.classList.add('table-row');
+
+    row.innerHTML = `
+    <td class="table-cell">${i + 1}</td>
+    <td class="table-cell leaderboard-name">${data[i].nickname}</td>
+    <td class="table-cell leaderboard-score">${data[i].score}</td>
+  `;
+
+    parent.appendChild(row);
+  }
+
+  setTimeout(() => {
+    leaderboard.style.opacity = "1";
+    leaderboard.style.transform = "translateY(0)";
+  }, 2500); // Delay matches the CSS animation delay
+}

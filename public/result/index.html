@@ -5,19 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Leaderboard</title>
   <link rel="stylesheet" href="style.css">
+  <script type="module" src="result.js"></script>
 </head>
 <body>
   <video id="background-video" autoplay loop muted>
     <source src="../assets/PurpleBg.mp4" type="video/mp4">
   </video>
-  <div class="container">
+  <div id="leaderboard-container" class="container" style="display: none;">
     <h2 class="room-title">name's room</h2>
-    <h1 class="score-title">Your score is <span class="highlight-score">1200</span>!</h1>
+    <h1 class="score-title">Your score is <span id="my-score" class="highlight-score">N/A</span>!</h1>
     
     <div class="leaderboard">
         <div class="leaderboard-header">
           <h2 class="leaderboard-title">
-            <span class="trophy">&#x1F3C6;</span> Leaderboard
+            <span class="trophy">&#x1F3C6;</span> Result
           </h2>
         </div>
         <div class="leaderboard-content">
@@ -29,22 +30,8 @@
                 <th class="table-head leaderboard-score">Score</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="table-row">
-                <td class="table-cell">1</td>
-                <td class="table-cell leaderboard-name">Player One</td>
-                <td class="table-cell leaderboard-score">12345</td>
-              </tr>
-              <tr class="table-row">
-                <td class="table-cell">2</td>
-                <td class="table-cell leaderboard-name">Player Two</td>
-                <td class="table-cell leaderboard-score">11000</td>
-              </tr>
-              <tr class="table-row">
-                <td class="table-cell">3</td>
-                <td class="table-cell leaderboard-name">Player Three</td>
-                <td class="table-cell leaderboard-score">9800</td>
-              </tr>
+            <tbody id="player-list">
+              
             </tbody>
           </table>
         </div>
