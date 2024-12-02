@@ -82,43 +82,42 @@ function renderRooms(rooms) {
 		const btnContainer = document.createElement('div');
 		btnContainer.classList.add('flex', 'gap-2', 'p-4', 'mt-auto');
 
-		if (room.status == 'waiting') {
-			if (occupiedRoom == room.id) {
-				if (isOwner) {
-					const btn = document.createElement('button');
-					btn.classList.add('button', 'button-green', 'w-full');
-					btn.textContent = 'Start Game';
-					btn.addEventListener('click', () => {
-						btn.textContent = 'Starting...';
-						disableButtons();
-						handleStartRoom(room.id);
-					});
-					actionButtons.push(btn);
-					btnContainer.appendChild(btn);
-				}
-
+		if (room.status != 'waiting') return;
+		if (occupiedRoom == room.id) {
+			if (isOwner) {
 				const btn = document.createElement('button');
-				btn.classList.add('button', 'button-red', 'w-full');
-				btn.textContent = 'Leave Room';
+				btn.classList.add('button', 'button-green', 'w-full');
+				btn.textContent = 'Start Game';
 				btn.addEventListener('click', () => {
-					btn.textContent = 'Leaving...';
+					btn.textContent = 'Starting...';
 					disableButtons();
-					handleLeaveRoom(room.id);
-				});
-				actionButtons.push(btn);
-				btnContainer.appendChild(btn);
-			} else if (!occupiedRoom) {
-				const btn = document.createElement('button');
-				btn.classList.add('button', 'button-primary', 'w-full');
-				btn.textContent = 'Join Room';
-				btn.addEventListener('click', () => {
-					btn.textContent = 'Joining...';
-					disableButtons();
-					handleJoinRoom(room.id);
+					handleStartRoom(room.id);
 				});
 				actionButtons.push(btn);
 				btnContainer.appendChild(btn);
 			}
+
+			const btn = document.createElement('button');
+			btn.classList.add('button', 'button-red', 'w-full');
+			btn.textContent = 'Leave Room';
+			btn.addEventListener('click', () => {
+				btn.textContent = 'Leaving...';
+				disableButtons();
+				handleLeaveRoom(room.id);
+			});
+			actionButtons.push(btn);
+			btnContainer.appendChild(btn);
+		} else if (!occupiedRoom) {
+			const btn = document.createElement('button');
+			btn.classList.add('button', 'button-primary', 'w-full');
+			btn.textContent = 'Join Room';
+			btn.addEventListener('click', () => {
+				btn.textContent = 'Joining...';
+				disableButtons();
+				handleJoinRoom(room.id);
+			});
+			actionButtons.push(btn);
+			btnContainer.appendChild(btn);
 		}
 
 		roomElement.innerHTML = `
