@@ -52,10 +52,10 @@ body {
 .scoreboard {
     position: absolute;
     top: 4%;
-    right: 3%; 
+    right: 8%; 
     width: 15vw;
     height: 8vh; 
-    background-color: #955001;
+    background-color: #fab113;
     color: white;
     display: flex;
     justify-content: center;
@@ -71,10 +71,10 @@ body {
 .scoretext {
     position: absolute;
     top: 4%;  
-    left: 3%; 
+    left: 8%; 
     width: 15vw;  
     height: 8vh;  
-    background-color: #955001;
+    background-color: #fab113;
     color: white;
     display: flex;
     justify-content: flex-start; 
@@ -146,9 +146,22 @@ body {
 #exitButton {
     position: absolute;
     background-color: #ffffff;
-    bottom: 5%;
-    right: 3%; 
-    z-index: 2; 
+    top: 5%; 
+    left: 3%;   
+    z-index: 2;
+    pointer-events: all;
+}
+
+#exitButton img {
+    transition: transform 0.2s ease-in-out;
+}
+
+#exitButton:hover img {
+    transform: scale(1.1); 
+}
+
+#exitButton:active img {
+    transform: scale(1); 
 }
 
 main {

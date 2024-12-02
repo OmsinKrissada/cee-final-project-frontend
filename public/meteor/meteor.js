@@ -162,7 +162,7 @@ class GameScene extends Phaser.Scene {
 
   updateScoreDisplay() {
     const scoreText = document.getElementById("scoreText");
-    scoreText.innerText = `MyScore : ${this.score}`;
+    scoreText.innerText = `Time Left : ${this.score}`;
   }
 
   // getRandomWord() {
