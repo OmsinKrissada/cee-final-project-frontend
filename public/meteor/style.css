@@ -18,13 +18,13 @@ body {
 }
 
 #background-video {
-    position: fixed; /* Fixed so it stays in place */
+    position: fixed; 
     top: 0;
     left: 0;
-    width: 100vw; /* Make it cover the whole viewport width */
-    height: 100vh; /* Make it cover the whole viewport height */
-    object-fit: cover; /* Ensures the video scales proportionally */
-    z-index: -1; /* Places it behind all other elements */
+    width: 100vw; 
+    height: 100vh; 
+    object-fit: cover; 
+    z-index: -1; 
 }
 
 #phaser-container {
@@ -33,7 +33,7 @@ body {
     left: 0;
     width: 100%; 
     height: 100%; 
-    z-index: 0; /* Above the video */
+    z-index: 0; 
 }
 
 .container {
@@ -44,11 +44,11 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
+    justify-content: flex-end; 
     z-index: 1; 
     pointer-events: none; 
 }
-
+ 
 .scoreboard {
     position: absolute;
     top: 5%;
@@ -66,8 +66,8 @@ body {
     text-align: center;
     pointer-events: auto; 
     font-family: var(--content-font);
-}
-
+} 
+/*
 .scoretext {
     position: absolute;
     top: 5%;  
@@ -86,6 +86,45 @@ body {
     text-align: left; 
     pointer-events: auto; 
     font-family: var(--content-font);
+} */
+
+.scoretext {
+    position: absolute;
+    top:5%;  
+    left: 50%; 
+    transform: translateX(-50%);
+    width: 30%;  
+    height: 8vh;  
+    background-color: transparent; 
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.0vw;  
+    font-weight: bold;
+    border-radius: 0px; 
+    text-align: center; 
+    pointer-events: auto;
+    font-family: var(--content-font);
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    .scoretext {
+        width: 40%;  
+        font-size: 3vw;  
+        height: 10vh; 
+        top: 5%;  
+    }
+}
+
+@media (max-width: 480px) {
+    .scoretext {
+        width: 60%;  
+        font-size: 4.5vw;  
+        height: 12vh; 
+        top: 5%;  
+    }
 }
 
 .textfield-container {
@@ -115,39 +154,54 @@ body {
 .textfield::placeholder {
     color: #aaa;
     font-style: italic;
+    font-size: 1.5vw; 
 }
 
 .textfield:focus::placeholder {
     color: transparent;
 }
 
+@media (max-width: 768px) {
+    .textfield::placeholder {
+        font-size: 3vw; 
+    }
+}
+
+@media (max-width: 480px) {
+    .textfield::placeholder {
+        font-size: 4vw; 
+    }
+}
+
 .action-button {
     width: 7vh; 
     height: 7vh;
     margin-left: 10px;
-    background-color: #ff4d4d;
+    background-color: #790c0c;
     border: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
 .action-button:hover {
-    transform: scale(1.1);
+    background-color: #a31818; 
+    transform: scale(1.05); 
 }
 
 .action-button:active {
-    transform: scale(0.95);
+    background-color:  #a31818; 
+    transform: scale(0.95); 
 }
 
 #exitButton {
     position: absolute;
-    background-color: #ffffff;
+    background-color: #790c0c;
     top: 5%; 
-    left: 5%;   
+    right: 5%;   
     z-index: 10;
     pointer-events: all;
 }

@@ -1,5 +1,4 @@
 @import url(../global.css);
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -7,19 +6,19 @@
   }
 
   #background-video {
-    position: fixed; /* Fixed so it stays in place */
+    position: fixed; 
     top: 0;
     left: 0;
-    width: 100vw; /* Make it cover the whole viewport width */
-    height: 100vh; /* Make it cover the whole viewport height */
-    object-fit: cover; /* Ensures the video scales proportionally */
-    z-index: -1; /* Places it behind all other elements */
+    width: 100vw; 
+    height: 100vh; 
+    object-fit: cover; 
+    z-index: -1; 
 }
   
   body {
     font-family: var(--content-font);
-    background-color: #170e01; /* Dark brown background */
-    color: #f8e8d6; /* Light beige text */
+    background-color: #170e01; 
+    color: #f8e8d6; 
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -44,13 +43,13 @@
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s forwards;
-    animation-delay: 1s; /* Delay the leaderboard animation */
+    animation-delay: 1s; 
   }
 
   .highlight-score {
     color: #9f3df5;
     font-weight: bold;
-    text-shadow: 0px 0px 8px rgba(97, 6, 142, 0.823); /* Glow effect */
+    text-shadow: 0px 0px 8px rgba(97, 6, 142, 0.823); 
   }
   
   @keyframes fadeInUp {
@@ -71,8 +70,6 @@
     flex-wrap: wrap;
     
     width: 100%;
-    /* margin-top: 10rem; */
-  
     gap: 1rem;
   }
   
@@ -89,7 +86,7 @@
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s forwards;
-    animation-delay: 2s; /* Delay the leaderboard animation */
+    animation-delay: 2s; 
   }
   
   .leaderboard-header {
@@ -104,8 +101,6 @@
     align-items: center;
     justify-content: center;
   }
-  
-  /* leaderboard */
   
   .trophy {
     margin-right: 0.5rem;
@@ -153,5 +148,5 @@
 
     opacity: 0;
     animation: fadeInUp 1s forwards;
-    animation-delay: 2s; /* Delay the leaderboard animation */
+    animation-delay: 2s; 
   }

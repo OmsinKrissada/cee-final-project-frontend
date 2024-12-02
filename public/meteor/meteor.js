@@ -76,12 +76,18 @@ class GameScene extends Phaser.Scene {
     }, 120000);
 
     this.inputField = document.getElementById("userInput");
+    this.clearButton = document.getElementById("clearButton");
 
     window.addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         this.meteors.forEach(meteor => this.checkWordMatch(meteor));
         this.inputField.value = "";
       }
+    });
+
+    this.clearButton.addEventListener("click", () => {
+      this.meteors.forEach(meteor => this.checkWordMatch(meteor));
+      this.inputField.value = "";  // Clear the input field after submitting
     });
 
     // setInterval(() => {
