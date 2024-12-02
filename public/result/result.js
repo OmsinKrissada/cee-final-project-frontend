@@ -27,7 +27,7 @@ function render(data) {
     row.classList.add('table-row');
 
     row.innerHTML = `
-    <td class="table-cell">${i}</td>
+    <td class="table-cell">${i + 1}</td>
     <td class="table-cell leaderboard-name">${data[i].nickname}</td>
     <td class="table-cell leaderboard-score">${data[i].score}</td>
   `;
