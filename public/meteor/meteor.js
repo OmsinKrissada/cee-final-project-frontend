@@ -17,9 +17,8 @@ class GameScene extends Phaser.Scene {
     this.inputText = "";
   }
 
-  ReturntoResultPage(name, score) {
-    //---------------------------------------------
-
+  forwardResult(result) {
+    window.location.href = '/result?d=' + btoa(JSON.stringify(result));
   }
 
   // telemetry
@@ -41,8 +40,9 @@ class GameScene extends Phaser.Scene {
 
     es.addEventListener("conclude", (msg) => {
       const body = JSON.parse(msg.data);
-      console.log('got update');
-      renderRooms(body);
+      console.log('got conclude');
+      console.log(body);
+      this.forwardResult(body);
     });
 
     es.onopen = () => {
@@ -70,7 +70,7 @@ class GameScene extends Phaser.Scene {
     // this.addMeteor();
 
     setTimeout(() => {
-      this.ReturntoResultPage("name", "score");
+      this.forwardResult("name", "score");
     }, 120000);
 
     this.inputField = document.getElementById("userInput");
