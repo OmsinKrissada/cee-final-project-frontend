@@ -185,7 +185,7 @@ class GameScene extends Phaser.Scene {
   }
 
   checkWordMatch(meteorData) {
-    if (this.inputField.value === meteorData.word) {
+    if (this.inputField.value.trim().toLowerCase() === meteorData.word) {
       // this.score++;
       this.handleCorrectWord(this.inputField.value);
       // this.updateScoreDisplay();
