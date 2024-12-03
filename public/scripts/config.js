@@ -1,1 +1,1 @@
-export const BACKEND_URL = 'http://ubunsin.krissada.com:3001';
+export const BACKEND_URL = 'http://3.221.172.234:3001';
