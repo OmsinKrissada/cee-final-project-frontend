@@ -227,9 +227,13 @@ main {
     z-index: 10;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 992px) {
     #time-left {
         text-align: center;
+    }
+
+    .scoreboard {
+        font-size: larger;
     }
 }
 
@@ -243,7 +247,7 @@ main {
     padding-bottom: 4px;
 }
 
-.scoreboard > li {
+.scoreboard li {
     list-style: none;
-    font-size: small;
+    /* font-size: small; */
 }
