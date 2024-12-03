@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     render(parsed);
   } catch (e) {
     console.error(e);
-    // window.location.href = '/';
+    window.location.href = '/';
   }
   leaderboard.style.display = 'block';
 });
