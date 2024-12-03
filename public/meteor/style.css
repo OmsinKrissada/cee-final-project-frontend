@@ -236,12 +236,12 @@ main {
         font-size: larger;
     }
 }
-
+/* 
 @media only screen and (max-width: 768px) {
     #background-video {
         background-color: #1F0D2C;
     }
-}
+} */
 
 .scoreboard {
     color: rgba(255, 255, 255, 0.8);
