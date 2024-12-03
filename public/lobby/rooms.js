@@ -42,8 +42,9 @@ function disableButtons() {
 }
 
 function renderRooms(rooms) {
-	if (rooms.some(g => g.status == 'ongoing' && g.players.some(p => p.id == localStorage.getItem('userId')))) {
-		window.location.href = '/meteor';
+	const filtered = rooms.filter(g => g.status == 'ongoing' && g.players.some(p => p.id == localStorage.getItem('userId')));
+	if (filtered.length > 0) {
+		window.location.href = `/meteor?id=${filtered[0].id}`;
 	}
 
 	roomsContainer.firstElementChild.removeAttribute('disabled');
