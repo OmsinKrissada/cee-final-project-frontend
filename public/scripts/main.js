@@ -45,6 +45,7 @@ async function fetchOverallLeaderboard() {
 			    <td class="table-cell leaderboard-score">${p.score}</td>
 			`;
 			container.appendChild(tr);
+			if (i == 6) break;
 		}
 		outerContainer.style.display = 'block';
 
@@ -69,6 +70,7 @@ async function fetchHighestLeaderboard() {
 			    <td class="table-cell leaderboard-score">${p.score}</td>
 			`;
 			container.appendChild(tr);
+			if (i == 6) break;
 		}
 		outerContainer.style.display = 'block';
 
