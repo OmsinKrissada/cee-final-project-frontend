@@ -46,6 +46,13 @@ class GameScene extends Phaser.Scene {
       this.forwardResult(body);
     });
 
+    es.addEventListener("score", (msg) => {
+      const body = JSON.parse(msg.data);
+      console.log('got score');
+      console.log(body);
+      this.updateScoreDisplay(body);
+    });
+
     es.onopen = () => {
       console.log("open");
     };
@@ -69,7 +76,7 @@ class GameScene extends Phaser.Scene {
     this.connectWithSSE();
     // this.addMeteor();
     // this.addMeteor();
-    this.startTimer();
+    // this.startTimer();
 
     setTimeout(() => {
       this.forwardResult("name", "score");
@@ -94,7 +101,7 @@ class GameScene extends Phaser.Scene {
     //   this.addMeteor();
     // }, 30000);
 
-    this.updateScoreDisplay();
+    // this.updateScoreDisplay();
   }
 
   update() {
@@ -103,32 +110,32 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  startTimer() {
-    this.timerEvent = this.time.addEvent({
-      delay: 1000, 
-      callback: this.updateTimer,
-      callbackScope: this,
-      loop: true
-    });
-  }
+  // startTimer() {
+  //   this.timerEvent = this.time.addEvent({
+  //     delay: 1000,
+  //     callback: this.updateTimer,
+  //     callbackScope: this,
+  //     loop: true
+  //   });
+  // }
 
-  updateTimer() {
-    if (this.timeLeft > 0) {
-      this.timeLeft--;
-      this.updateTimerDisplay();
-    } else {
-      this.timerEvent.remove();
-      this.updateTimerDisplay(); 
-    }
-  }
+  // updateTimer() {
+  //   if (this.timeLeft > 0) {
+  //     this.timeLeft--;
+  //     this.updateTimerDisplay();
+  //   } else {
+  //     this.timerEvent.remove();
+  //     this.updateTimerDisplay();
+  //   }
+  // }
 
-  updateTimerDisplay() {
-    let minutes = Math.floor(this.timeLeft / 60);
-    let seconds = this.timeLeft % 60;
-    if (seconds < 10) seconds = "0" + seconds; 
-    if (minutes < 10) minutes = "0" + minutes; 
-    document.getElementById("scoreText").innerText = `Time Left : ${minutes}:${seconds}`;
-  }
+  // updateTimerDisplay() {
+  //   let minutes = Math.floor(this.timeLeft / 60);
+  //   let seconds = this.timeLeft % 60;
+  //   if (seconds < 10) seconds = "0" + seconds;
+  //   if (minutes < 10) minutes = "0" + minutes;
+  //   document.getElementById("time-left").innerText = `${minutes}:${seconds}`;
+  // }
 
   formatTime(time) {
     return time < 10 ? `0${time}` : time;
@@ -199,9 +206,15 @@ class GameScene extends Phaser.Scene {
     api.post('/game/type/' + word);
   }
 
-  updateScoreDisplay() {
-    const scoreText = document.getElementById("scoreText");
-    scoreText.innerText = `Time Left : ${this.score}`;
+  updateScoreDisplay(scores) {
+    const container = document.getElementById("scoreboard-list");
+    container.innerHTML = '';
+
+    for (const score of scores) {
+      const li = document.createElement('li');
+      li.textContent = `${score.nickname}: ${score.score}`;
+      container.appendChild(li);
+    }
   }
 
   // getRandomWord() {
