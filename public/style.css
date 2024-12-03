@@ -173,6 +173,11 @@ h1 {
 }
 
 .leaderboard {
+  /* change to block on load */
+  opacity: 0;
+  filter: blur(20px);
+  transition: filter 0.2s;
+
   width: 100%;
   max-width: 22rem;
   margin-top: 2rem;

@@ -28,3 +28,55 @@ if (localStorage.getItem('token')) {
 } else {
 	document.getElementById('when-logged-out').style.display = null;
 }
+
+
+async function fetchOverallLeaderboard() {
+	const container = document.getElementById('lb-overall-container');
+	const outerContainer = document.getElementById('lb-overall-outer-container');
+	const lb = await api.get(`/leaderboard/overall`);
+	if (lb) {
+		let i = 1;
+		for (const p of lb) {
+			const tr = document.createElement('tr');
+			tr.classList.add('table-row');
+			tr.innerHTML = `
+			    <td class="table-cell">${i++}</td>
+			    <td class="table-cell">${p.nickname}</td>
+			    <td class="table-cell leaderboard-score">${p.score}</td>
+			`;
+			container.appendChild(tr);
+		}
+		outerContainer.style.display = 'block';
+
+		// setTimeout cuz the transition effect doesn't happen when all these 3 styles are applied at the same time
+		outerContainer.style.opacity = 1;
+		outerContainer.style.filter = 'blur(0)';
+	}
+}
+
+async function fetchHighestLeaderboard() {
+	const container = document.getElementById('lb-highest-container');
+	const outerContainer = document.getElementById('lb-highest-outer-container');
+	const lb = await api.get(`/leaderboard/highest`);
+	if (lb) {
+		let i = 1;
+		for (const p of lb) {
+			const tr = document.createElement('tr');
+			tr.classList.add('table-row');
+			tr.innerHTML = `
+			    <td class="table-cell">${i++}</td>
+			    <td class="table-cell">${p.nickname}</td>
+			    <td class="table-cell leaderboard-score">${p.score}</td>
+			`;
+			container.appendChild(tr);
+		}
+		outerContainer.style.display = 'block';
+
+		// setTimeout cuz the transition effect doesn't happen when all these 3 styles are applied at the same time
+		outerContainer.style.opacity = 1;
+		outerContainer.style.filter = 'blur(0)';
+	}
+}
+
+fetchOverallLeaderboard();
+fetchHighestLeaderboard();
