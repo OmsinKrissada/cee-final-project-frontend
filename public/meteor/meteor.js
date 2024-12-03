@@ -85,10 +85,6 @@ class GameScene extends Phaser.Scene {
     // this.addMeteor();
     // this.startTimer();
 
-    setTimeout(() => {
-      this.forwardResult("name", "score");
-    }, 120000);
-
     this.inputField = document.getElementById("userInput");
     this.clearButton = document.getElementById("clearButton");
 
