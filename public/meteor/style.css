@@ -236,6 +236,16 @@ main {
         font-size: larger;
     }
 }
+
+@media only screen and (max-width: 992px) {
+    #time-left {
+        text-align: center;
+    }
+
+    .scoreboard {
+        font-size: smaller;
+    }
+}
 /* 
 @media only screen and (max-width: 768px) {
     #background-video {
