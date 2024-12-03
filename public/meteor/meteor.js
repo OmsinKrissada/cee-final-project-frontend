@@ -114,6 +114,8 @@ class GameScene extends Phaser.Scene {
     // }, 30000);
 
     // this.updateScoreDisplay();
+
+    this.deleteMeteor(this.createMeteorAndWord('', -100, -100));
   }
 
   update() {
