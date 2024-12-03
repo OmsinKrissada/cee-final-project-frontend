@@ -35,22 +35,29 @@ class GameScene extends Phaser.Scene {
 
     es.addEventListener("word", (msg) => {
       const { word } = JSON.parse(msg.data);
-      console.log(`got word: ${word}`);
+      console.debug(`got word: ${word}`);
       this.addMeteor(word);
     });
 
     es.addEventListener("conclude", (msg) => {
       const body = JSON.parse(msg.data);
-      console.log('got conclude');
-      console.log(body);
+      console.debug('got conclude');
+      console.debug(body);
       this.forwardResult(body);
     });
 
     es.addEventListener("score", (msg) => {
       const body = JSON.parse(msg.data);
-      console.log('got score');
-      console.log(body);
+      console.debug('got score');
+      console.debug(body);
       this.updateScoreDisplay(body);
+    });
+
+    es.addEventListener("time_remaining", (msg) => {
+      const body = JSON.parse(msg.data);
+      console.debug('got time');
+      console.debug(body);
+      this.timeLeft = body.seconds + 1;
     });
 
     es.onopen = () => {
@@ -97,6 +104,11 @@ class GameScene extends Phaser.Scene {
       this.inputField.value = "";  // Clear the input field after submitting
     });
 
+    setInterval(() => {
+      if (this.timeLeft > 0) this.timeLeft--;
+      this.updateTimerDisplay();
+    }, 1000);
+
     // setInterval(() => {
     //   this.addMeteor();
     // }, 30000);
@@ -110,32 +122,13 @@ class GameScene extends Phaser.Scene {
     });
   }
 
-  // startTimer() {
-  //   this.timerEvent = this.time.addEvent({
-  //     delay: 1000,
-  //     callback: this.updateTimer,
-  //     callbackScope: this,
-  //     loop: true
-  //   });
-  // }
-
-  // updateTimer() {
-  //   if (this.timeLeft > 0) {
-  //     this.timeLeft--;
-  //     this.updateTimerDisplay();
-  //   } else {
-  //     this.timerEvent.remove();
-  //     this.updateTimerDisplay();
-  //   }
-  // }
-
-  // updateTimerDisplay() {
-  //   let minutes = Math.floor(this.timeLeft / 60);
-  //   let seconds = this.timeLeft % 60;
-  //   if (seconds < 10) seconds = "0" + seconds;
-  //   if (minutes < 10) minutes = "0" + minutes;
-  //   document.getElementById("time-left").innerText = `${minutes}:${seconds}`;
-  // }
+  updateTimerDisplay() {
+    let minutes = Math.floor(this.timeLeft / 60);
+    let seconds = this.timeLeft % 60;
+    if (seconds < 10) seconds = "0" + seconds;
+    if (minutes < 10) minutes = "0" + minutes;
+    document.getElementById("time-left").innerText = `${minutes}:${seconds}`;
+  }
 
   formatTime(time) {
     return time < 10 ? `0${time}` : time;
@@ -242,5 +235,10 @@ const config = {
     }
   }
 };
+
+document.getElementById('exit-button').addEventListener('click', async () => {
+  await api.put('/game/leave/' + new URLSearchParams(window.location.search).get('id'));
+  window.location.href = '/lobby';
+});
 
 const game = new Phaser.Game(config);
