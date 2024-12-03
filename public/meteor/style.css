@@ -49,24 +49,6 @@ body {
     pointer-events: none; 
 }
  
-.scoreboard {
-    position: absolute;
-    top: 5%;
-    right: 6%; 
-    width: 15vw;
-    height: 8vh; 
-    background-color: #fab113;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5vw;
-    font-weight: bold;
-    border-radius: 5px;
-    text-align: center;
-    pointer-events: auto; 
-    font-family: var(--content-font);
-} 
 /*
 .scoretext {
     position: absolute;
@@ -88,25 +70,22 @@ body {
     font-family: var(--content-font);
 } */
 
-.scoretext {
-    position: absolute;
-    top:5%;  
-    left: 50%; 
-    transform: translateX(-50%);
-    width: 30%;  
-    height: 8vh;  
-    background-color: transparent; 
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2.0vw;  
-    font-weight: bold;
-    border-radius: 0px; 
-    text-align: center; 
-    pointer-events: auto;
-    font-family: var(--content-font);
+
+#exitButton {
     z-index: 10;
+    height: fit-content;
+}
+
+#exitButton img {
+    transition: transform 0.2s ease-in-out;
+}
+
+#exitButton:hover img {
+    transform: scale(1.1); 
+}
+
+#exitButton:active img {
+    transform: scale(1); 
 }
 
 @media (max-width: 768px) {
@@ -177,9 +156,9 @@ body {
     width: 7vh; 
     height: 7vh;
     margin-left: 10px;
-    background-color: #790c0c;
+    background-color: #5b1ad4;
     border: none;
-    border-radius: 50%;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -188,34 +167,11 @@ body {
 }
 
 .action-button:hover {
-    background-color: #a31818; 
     transform: scale(1.05); 
 }
 
 .action-button:active {
-    background-color:  #a31818; 
     transform: scale(0.95); 
-}
-
-#exitButton {
-    position: absolute;
-    background-color: #790c0c;
-    top: 5%; 
-    right: 5%;   
-    z-index: 10;
-    pointer-events: all;
-}
-
-#exitButton img {
-    transition: transform 0.2s ease-in-out;
-}
-
-#exitButton:hover img {
-    transform: scale(1.1); 
-}
-
-#exitButton:active img {
-    transform: scale(1); 
 }
 
 main {
@@ -237,4 +193,57 @@ main {
 @font-face {
     font-family: 'MyFont';
     src: url('../assets/AllFont/MouldyCheeseRegular.ttf');
+}
+
+.stat-container {
+    /* background-color: black; */
+    display: flex;
+    justify-content: space-between;
+    
+    padding: 16px;
+    width: 100%;
+}
+
+#time-left {
+    position: absolute;
+    top: 16px;
+    /* left: 50%; */
+
+    width: 100%;
+
+    background-color: transparent; 
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;  
+    font-weight: bold;
+    border-radius: 0px; 
+    /* text-align: center;  */
+    pointer-events: auto;
+
+    font-family: var(--content-font);
+    z-index: 10;
+}
+
+@media only screen and (max-width: 600px) {
+    #time-left {
+        text-align: center;
+    }
+}
+
+.scoreboard {
+    color: rgba(255, 255, 255, 0.8);
+
+    font-family: var(--content-font);
+}
+
+.scoreboard > h3 {
+    padding-bottom: 4px;
+}
+
+.scoreboard > li {
+    list-style: none;
+    font-size: small;
 }

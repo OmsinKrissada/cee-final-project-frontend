@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phaser Game</title>
     <link rel="stylesheet" href="style.css">
+    <!-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> -->
     <script src="https://cdn.jsdelivr.net/npm/phaser@3.87.0/dist/phaser.min.js"></script>
 </head>
 <body>
-    <main>
+    <main style="width: 100%;">
         <video id="background-video" autoplay loop muted>
             <source src="../assets/PurpleBg.mp4" type="video/mp4">
         </video>
         <div id="phaser-container"></div>
+
+        <div id="time-left">02:00</div>
+        <div class="stat-container">
+            <div class="scoreboard">
+                <h3>Scoreboard</h3>
+                <ul id="scoreboard-list">
+                </ul>
+            </div>
+            <button id="exitButton" class="button button-red">
+                <img src="../assets/icons/exitwitharrow.svg" alt="exit" width="38">
+            </button>
+        </div>
         <div class="container">
-             <!-- <div class="scoreboard">ScoreBoard</div> -->
-            <div class="scoretext" id="scoreText">Time Left : 02:00</div>
             <div class="textfield-container">
                 <input
                     id="userInput" 
@@ -27,9 +38,6 @@
                     <img src="../assets/icons/send.svg" alt="send" width="37">
                 </button>
             </div>
-            <button id="exitButton" class="button button-red">
-                <img src="../assets/icons/exitwitharrow.svg" alt="exit" width="38">
-            </button>
         </div>
     </main>
     <script type="module" src="meteor.js"></script>
