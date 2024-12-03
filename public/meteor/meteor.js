@@ -15,7 +15,7 @@ class GameScene extends Phaser.Scene {
     this.meteors = [];
     this.score = 0;
     this.inputText = "";
-    this.timeLeft = 120;
+    this.timeLeft = 90;
   }
 
   forwardResult(result) {
