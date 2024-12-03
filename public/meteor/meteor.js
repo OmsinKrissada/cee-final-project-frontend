@@ -182,6 +182,8 @@ class GameScene extends Phaser.Scene {
   deleteMeteor(meteorData) {
     meteorData.meteor.destroy();
     meteorData.wordBox.destroy();
+    const idx = this.meteors.indexOf(meteorData);
+    this.meteors.splice(idx, 1);
   }
 
   checkWordMatch(meteorData) {
