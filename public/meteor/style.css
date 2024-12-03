@@ -9,7 +9,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     overflow: hidden; 
     display: flex;
     flex-direction: column;
@@ -121,11 +121,11 @@ body {
 
 .textfield {
     flex: 1;
-    height: 7vh;
+    height: 3.5rem;
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 0 10px;
-    font-size: 1.5vw;
+    font-size: 1rem;
     color: black;
     font-family: var(--content-font);
 }
@@ -153,8 +153,8 @@ body {
 }
 
 .action-button {
-    width: 7vh; 
-    height: 7vh;
+    width: 3.5rem; 
+    height: 3.5rem;
     margin-left: 10px;
     background-color: #5b1ad4;
     border: none;
