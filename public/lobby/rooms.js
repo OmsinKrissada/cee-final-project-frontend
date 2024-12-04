@@ -75,7 +75,7 @@ function renderRooms(rooms) {
 	});
 
 	rooms.forEach(room => {
-		const ownerName = room.players.filter(p => p.id == room.owner)[0]?.nickname || 'Somebody';
+		let ownerName = room.players.filter(p => p.id == room.owner)[0]?.nickname || 'Somebody';
 
 		const roomElement = document.createElement('div');
 		roomElement.classList.add('room');
@@ -121,6 +121,8 @@ function renderRooms(rooms) {
 			btnContainer.appendChild(btn);
 		}
 
+		if (ownerName && ownerName.length > 20) ownerName = ownerName.substring(0, 20) + '...';
+
 		roomElement.innerHTML = `
         <div class="h-full rounded-lg box" style="background-color: rgb(56, 29, 11);">
           <div class="flex p-4">
@@ -132,7 +134,11 @@ function renderRooms(rooms) {
           </div>
           <div class="p-4 flex items-center justify-between text-sm">
             <ul>
-              ${room.players.map(p => `<li>- ${p.nickname}</li>`).join('')}
+              ${room.players.map(p => {
+			let nickname = p.nickname;
+			if (nickname.length > 20) nickname = nickname.substring(0, 20) + '...';
+			return `<li>- ${nickname}</li>`;
+		}).join('')}
             </ul>
           </div>
         </div>

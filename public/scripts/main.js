@@ -37,11 +37,13 @@ async function fetchOverallLeaderboard() {
 	if (lb) {
 		let i = 1;
 		for (const p of lb) {
+			let nickname = p.nickname;
+			if (nickname.length > 20) nickname = nickname.substring(0, 20) + '...';
 			const tr = document.createElement('tr');
 			tr.classList.add('table-row');
 			tr.innerHTML = `
 			    <td class="table-cell">${i++}</td>
-			    <td class="table-cell">${p.nickname}</td>
+			    <td class="table-cell">${nickname}</td>
 			    <td class="table-cell leaderboard-score">${p.score}</td>
 			`;
 			container.appendChild(tr);
@@ -62,11 +64,13 @@ async function fetchHighestLeaderboard() {
 	if (lb) {
 		let i = 1;
 		for (const p of lb) {
+			let nickname = p.nickname;
+			if (nickname.length > 20) nickname = nickname.substring(0, 20) + '...';
 			const tr = document.createElement('tr');
 			tr.classList.add('table-row');
 			tr.innerHTML = `
 			    <td class="table-cell">${i++}</td>
-			    <td class="table-cell">${p.nickname}</td>
+			    <td class="table-cell">${nickname}</td>
 			    <td class="table-cell leaderboard-score">${p.score}</td>
 			`;
 			container.appendChild(tr);

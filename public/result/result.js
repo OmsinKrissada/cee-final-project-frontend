@@ -25,9 +25,12 @@ function render(data) {
     const row = document.createElement('tr');
     row.classList.add('table-row');
 
+    let nickname = data[i].nickname;
+    if (nickname.length > 20) nickname = nickname.substring(0, 20) + '...';
+
     row.innerHTML = `
     <td class="table-cell">${i + 1}</td>
-    <td class="table-cell leaderboard-name">${data[i].nickname}</td>
+    <td class="table-cell leaderboard-name">${nickname}</td>
     <td class="table-cell leaderboard-score">${data[i].score}</td>
   `;
 

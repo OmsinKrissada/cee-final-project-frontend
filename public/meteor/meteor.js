@@ -205,7 +205,9 @@ class GameScene extends Phaser.Scene {
 
     for (const score of scores) {
       const li = document.createElement('li');
-      li.textContent = `${score.nickname}: ${score.score}`;
+      let nickname = score.nickname;
+      if (nickname.length > 20) nickname = nickname.substring(0, 20) + '...';
+      li.textContent = `${nickname}: ${score.score}`;
       container.appendChild(li);
     }
   }
